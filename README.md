@@ -1,1 +1,1 @@
-# CDN
+# CDN By: xploit.my.id
