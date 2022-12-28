@@ -1,0 +1,190 @@
+<style>
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+.imagePreview{
+    min-width: 38px;
+    height: 38px;
+    border-radius: 4px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin-right: 15px;
+}
+.file-upload {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    box-shadow: 0 3px 35px rgb(0 0 0 / 10%);
+    margin-bottom: 20px;
+    position: relative;
+    color: black;
+    font-size: 15px;
+    border-radius: 5px;
+    background-color: #ffffff;
+}
+.drK .file-upload {
+    box-shadow: 0 3px 35px rgb(0 0 0 / 10%);
+    color: white;
+    background-color: #252526;
+}
+.file-select {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+
+.file-select-name {
+    margin-left: 15px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 13px;
+    width: 100%;
+    text-align: center;
+}
+
+.file-select input[type=file] {
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.file-remove{
+    margin-left: 15px;
+    position: absolute;
+    right: 15px;
+    top: 20px;
+}
+.text-right {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-start;
+    margin: 5px;
+}
+.btn {
+    background: #00c173;
+    color: #ffffff;
+    border: transparnt;
+    padding: 8px 20px 8px 20px;
+    margin: 5px;
+    border-radius: 5px;
+    font-size: 13px;
+    font-weight: 300;
+    box-shadow: 0 10px 8px -8px rgb(0 0 0 / 25%);
+    text-decoration: none;
+}
+.file-add {
+    font-size: 20px;
+    padding: 0px 15px 0px 15px;
+    margin: 3px;
+    cursor: pointer;
+}
+.file-remove {
+    margin-left: 15px;
+    position: absolute;
+    right: 10px;
+    top: 0;
+    cursor: pointer;
+    color: #d56060;
+    font-weight: bold;
+}
+.btn-upload {
+    background: #7f99ff;
+    cursor: pointer;
+    border: none;
+}
+.cArea label .n {
+  top: -10px;
+}
+</style>
+
+<div class="upload-card">
+  <!--<div class="text-right">
+    <button class="btn btn-primary mb-3 file-add">+</button>
+  </div>-->
+  <div class="file-upload">
+    <div class="file-select">
+      <div class="imagePreview"></div>
+      <button class="btn btn-upload">Upload</button>
+      <div class="file-select-name">No File Chosen</div>
+      <input id="file" type="file" name="files[]" class="profileimg">
+    </div>
+  </div>
+</div>
+
+<div class='cArea'>
+  <label>
+    <textarea class='cInpt cMsg' id='imgBase64' name='message' rows='3' readonly></textarea>
+    <span class='n'>Image to Base64</span>
+  </label>
+</div>
+
+<script src='https://code.jquery.com/jquery-3.3.1.slim.min.js'></script>
+<script src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js'></script>
+<script>
+$(document).ready(function() {
+    $(document).on('change', '.file-upload input[type="file"]', function() {
+        var filename = $(this).val();
+        if (/^\s*$/.test(filename)) {
+            $(this).parents(".file-upload").find(".file-select-name").text("No file chosen...");
+        } else {
+            $(this).parents(".file-upload").find(".file-select-name").text(filename.substring(filename.lastIndexOf("\\") + 1, filename.length));
+        }
+
+        var uploadFile = $(this);
+        var files = !!this.files ? this.files : [];
+        if (!files.length || !window.FileReader) return; // no file selected, or no FileReader support
+
+        if (/^image/.test(files[0].type)) { // only image file
+            var reader = new FileReader(); // instance of the FileReader
+            reader.readAsDataURL(files[0]); // read the local file
+
+            reader.onloadend = function() { // set image data as background of div
+                // alert(uploadFile.closest(".file-upload").find('.imagePreview').length);
+                uploadFile.closest(".file-upload").find('.imagePreview').css("background-image", "url(" + this.result + ")");
+            }
+        }
+    });
+    $(document).on('click', '.file-remove', function(e) {
+        e.preventDefault();
+        $(this).closest('.file-upload').remove();
+        return false;
+    });
+    $(document).on('click', '.file-add', function(e) {
+        e.preventDefault();
+        $(".upload-card").append('<div class="file-upload">' +
+            '<div class="file-remove">x</div>' +
+            '<div class="file-select">' +
+                '<div class="imagePreview"></div>' +
+                '<button class="btn btn-upload">Upload</button>' +
+                '<div class="file-select-name">No File Chosen</div>' +
+                '<input type="file" name="files[]" class="profileimg">' +
+            '</div>' +
+       '</div>');
+        return false;
+        
+    });
+});
+  document.querySelector('#file').addEventListener('change', handleFileSelect, false);
+
+$('input[type=file]').change(function () {
+      console.dir(this.files[0])
+})
+
+function handleFileSelect(e) {
+    var files = e.target.files;
+    var filesArr = Array.prototype.slice.call(files);
+    filesArr.forEach(function(f) {
+      if (!f.type.match("image.*")) return;
+      var reader = new FileReader();
+      reader.onload = function(e) {
+        console.log(e);
+        var base64 = e.target.result;
+        document.getElementById("imgBase64").value = base64;
+      };
+      reader.readAsDataURL(f);
+    });
+}
+</script>
