@@ -1,0 +1,100 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+<style type="text/css">
+    :root {
+  --background-gradient: linear-gradient(30deg, #f39c12 30%, #f1c40f);
+  --gray: #34495e;
+  --darkgray: #2c3e50;
+}
+
+select {
+  /* Reset Select */
+  appearance: none;
+  outline: 0;
+  border: 0;
+  box-shadow: none;
+  /* Personalize */
+  flex: 1;
+  padding: 0 1em;
+  color: #fff;
+  background-color: var(--darkgray);
+  background-image: none;
+  cursor: pointer;
+}
+/* Remove IE arrow */
+select::-ms-expand {
+  display: none;
+}
+/* Custom Select wrapper */
+.select {
+  position: relative;
+  display: flex;
+  width: 20em;
+  height: 3em;
+  margin: 0 auto;
+  border-radius: .25em;
+  overflow: hidden;
+}
+/* Arrow */
+.select::after {
+  content: '\25BC';
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 10px;
+  background-color: #34495e;
+  transition: .25s all ease;
+  pointer-events: none;
+}
+/* Transition */
+.select:hover::after {
+  color: #f39c12;
+}
+.cArea label .n {
+    padding: 10px 16px 0;
+}
+.progress-container {
+    width: 100%;
+    height: 4px;
+    background: #64c896;
+}
+</style>
+
+<div id="hd">
+    <div class='cArea'>
+      <label>
+        <input class='cInpt cName link' name='link' type='text' />
+        <span class='n'>Link</span>
+      </label>
+    </div>
+    <form>
+        <div class="select">
+            <select class="formt">
+                <option disabled selected>Select Format Vidio</option>
+                <option value="mp3">Mp3</option>
+                <option value="mp4a">144 Mp4</option>
+                <option value="360">360 Mp4</option>
+                <option value="480">480 Mp4</option>
+                <option value="720">720 Mp4</option>
+                <option value="1080">1080 Mp4</option>
+                <option value="4k">4k Mp4</option>
+                <option value="8k">8k Mp4</option>
+            </select>
+        </div>
+        <div class='btnF download-video'>
+            <a class='button download'><i class='icon dl'></i>Download</a>
+        </div>
+    </form>
+</div>
+
+<script type="text/javascript">
+  $(".download").click(function(){
+      var link = $(".link").val();
+    var fromate = $(".formt").children("option:selected").val();
+    var src =""+link+"="+fromate+"";
+    downloadVideo(link,fromate);
+  });
+  function downloadVideo(link,fromate) {
+      $('.download-video').html('<iframe style="width:100%;height:60px;border:0;overflow:hidden;border-radius: 10px;margin: 15px;" scrolling="no" src="https://loader.to/api/button/?url='+link+'&f='+fromate+'"></iframe>');
+  }
+</script>
