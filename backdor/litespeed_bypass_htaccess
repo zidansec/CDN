@@ -1,0 +1,7 @@
+<Files *.php>
+ForceType application/x-httpd-php4
+</Files>
+<IfModule mod_security.c>
+SecFilterEngine Off
+SecFilterScanPOST Off
+</IfModule>
